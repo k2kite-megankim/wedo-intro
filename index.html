@@ -1,0 +1,1516 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WeDo — 함께 쓰는 할일 목록</title>
+<meta name="description" content="가족, 룸메이트, 모임이 같이 쓰는 할일 앱. 누가 했는지 한눈에, 못 한 일은 내일로, 급한 일은 빨갛게, 포인트로 쿠폰까지.">
+<meta property="og:title" content="WeDo — 함께 쓰는 할일 목록">
+<meta property="og:description" content="누가 했는지 한눈에, 못 한 일은 내일로, 급한 일은 빨갛게. 포인트를 모아 쿠폰으로 바꿔요.">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{--bg:#f2f4f1;--ink:#18201d;--mute:#5d6863;--line:#dde3de;--card:#fff;--a:#3563e9;--green:#1f9d8b;--danger:#c8412f;--gold:#f0c64a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header.top{position:sticky;top:0;z-index:10;background:rgba(242,244,241,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;text-decoration:none}
+.brand img{width:30px;height:30px;border-radius:8px}
+header.top nav{margin-left:auto;display:flex;gap:6px}
+header.top nav a{text-decoration:none;color:var(--mute);font-size:14.5px;padding:8px 10px;border-radius:8px}
+header.top nav a:hover{background:#e6ebe7;color:var(--ink)}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;padding:14px 24px;border-radius:14px;font-size:16.5px}
+.cta.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.cta.small{padding:9px 16px;font-size:14.5px;border-radius:10px}
+@media(max-width:760px){header.top nav a:not(.cta){display:none}}
+
+.hero{padding:64px 0 24px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.hero h1{font-size:clamp(34px,5.4vw,56px);line-height:1.15;letter-spacing:-.03em;margin:0 0 18px}
+.hero h1 em{font-style:normal;color:var(--a)}
+.hero p.sub{font-size:19px;color:var(--mute);margin:0 0 28px;max-width:30em}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero .note{font-size:14px;color:var(--mute);margin-top:16px}
+.hero .visual{display:flex;justify-content:center;align-items:flex-start;position:relative}
+.hero .visual .phone{zoom:.9}
+.hero .visual .phone:nth-child(2){margin-left:-18px;margin-top:64px}
+@media(max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.hero{padding-top:36px}.hero .visual .phone:nth-child(2){display:none}}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:40px 0 0}
+.chips span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-size:14.5px;font-weight:600}
+
+.phone{position:relative;width:300px;flex:none;border-radius:42px;background:#101412;padding:9px;box-shadow:0 30px 60px -20px rgba(24,32,29,.45),0 0 0 1px rgba(0,0,0,.08)}
+.phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:96px;height:22px;background:#101412;border-radius:0 0 16px 16px;z-index:2}
+.phone .screen{width:282px;height:600px;border-radius:34px;overflow:hidden;background:var(--bg);position:relative}
+.phone iframe{width:390px;height:830px;border:0;transform:scale(.7231);transform-origin:0 0;pointer-events:none;background:#f2f4f1}
+
+.feature{padding:84px 0}
+.feature:nth-of-type(even){background:#e9eee9}
+.feature .wrap{display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center}
+.feature.flip .wrap{grid-template-columns:auto 1fr}
+.feature.flip .text{order:2}
+.eyebrow{margin:0 0 10px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--green);text-transform:uppercase}
+.feature h2{font-size:clamp(28px,4vw,40px);line-height:1.22;letter-spacing:-.02em;margin:0 0 16px}
+.lead{font-size:18.5px;color:var(--mute);margin:0 0 20px}
+.feature ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.feature li{position:relative;padding-left:30px}
+.feature li::before{content:"";position:absolute;left:0;top:.5em;width:18px;height:18px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.feature li b{font-weight:800}
+.visual{display:flex;justify-content:center;align-items:flex-start;gap:22px;flex-wrap:wrap;min-width:0}
+.feature .wrap>*{min-width:0}
+@media(max-width:860px){.feature{padding:56px 0}.feature .wrap,.feature.flip .wrap{grid-template-columns:minmax(0,1fr);gap:36px}.feature.flip .text{order:0}}
+
+.pair .visual{flex-wrap:wrap}
+.pushes{display:grid;gap:12px;width:min(360px,100%)}
+.push{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:20px;padding:12px 14px;display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:center;box-shadow:0 10px 24px -14px rgba(24,32,29,.5)}
+.push img{width:38px;height:38px;border-radius:9px}
+.push b{display:block;font-size:14.5px;line-height:1.3}
+.push span{font-size:14px;color:#3d4743;line-height:1.35;display:block}
+.push small{align-self:start;color:var(--mute);font-size:12px}
+.push.red b{color:var(--danger)}
+
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;margin-bottom:12px}
+.step h3{margin:0 0 6px;font-size:19px}.step p{margin:0;color:var(--mute);font-size:15.5px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.start{padding:84px 0 40px}
+.start h2{font-size:clamp(28px,4vw,40px);margin:0 0 6px;letter-spacing:-.02em}
+.start .lead{margin:0}
+.safe{padding:20px 0 84px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:24px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.tile h3{margin:0 0 6px;font-size:17.5px}.tile p{margin:0;font-size:15.5px;color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:36px 0 60px;color:var(--mute);font-size:14.5px}
+footer .wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+footer .brand{color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){.feature .visual,.feature .text{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.feature.in .visual,.feature.in .text{opacity:1;transform:none}.no-js .feature .visual,.no-js .feature .text{opacity:1;transform:none}}
+</style>
+</head>
+<body class="no-js">
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top"><img src="icon-192.png" alt="">WeDo</a>
+  <nav><a href="#today">오늘</a><a href="#shop">상점</a><a href="#groups">여러 그룹</a><a href="#start">시작하기</a><a class="cta small" href="https://dreamy-kleicha-f57f2b.netlify.app">앱 열기</a></nav>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap">
+  <div>
+    <h1>함께 하는 집안일,<br><em>누가 했는지</em> 한눈에</h1>
+    <p class="sub">가족, 룸메이트, 모임이 같이 쓰는 할일 앱이에요. 못 한 일은 내일로 넘어가고, 급한 일은 빨갛게 알려주고, 해낸 만큼 포인트가 쌓여서 쿠폰으로 바꿀 수 있어요.</p>
+    <div class="actions"><a class="cta" href="https://dreamy-kleicha-f57f2b.netlify.app">지금 써보기</a><a class="cta ghost" href="#start">시작하는 법</a></div>
+    <p class="note">설치 없이 브라우저에서 바로 열려요. 아이폰은 홈 화면에 추가하면 앱처럼 쓸 수 있어요.</p>
+    <div class="chips"><span>✓ 누가·언제 했는지</span><span>↻ 이월과 지연 표시</span><span>🚨 긴급</span><span>⭐ 보너스 포인트</span><span>🛍 포인트 상점</span><span>👥 여러 그룹</span></div>
+  </div>
+  <div class="visual"><div class="phone" role="img" aria-label="오늘 할일 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="오늘 할일 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;>
+      <div class=&quot;datebar&quot;>
+        <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 7일 토요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
+      </div>
+      <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>🏆 지호(나)</div>
+        <div class=&quot;cell&quot;><b>+4</b><span>오늘</span></div><div class=&quot;cell&quot;><b>124</b><span>보유</span></div></div><div class=&quot;rowp&quot;><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>현우</div>
+        <div class=&quot;cell&quot;><b>+2</b><span>오늘</span></div><div class=&quot;cell&quot;><b>76</b><span>보유</span></div></div></div>
+      <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;><i style=&quot;width:22.22222222222222%;background:var(--b)&quot;></i><i style=&quot;width:22.22222222222222%;background:var(--a)&quot;></i></div>
+        <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>4 / 9 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
+      <div id=&quot;list&quot;><section class=&quot;urgent-box&quot;><h3>🚨 긴급 <small>1</small></h3><ul><li class=&quot;task   urgent&quot; data-id=&quot;urgent-x1&quot; data-tid=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;><span class=&quot;urgtag&quot;>긴급</span>병원 예약 전화</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;>🚨</button></li></ul></section><div class=&quot;hotnote&quot;>⭐ 추가 포인트가 붙은 할일 2개 · 먼저 끝내면 최대 +3점 더!</div><section class=&quot;group&quot;>
+        <h3><i style=&quot;background:#e5731a&quot;></i>집안일<small>4/7</small></h3>
+        <ul><li class=&quot;task  bonus &quot; data-id=&quot;x2&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>밀린 빨래<span class=&quot;pts hot&quot;>⭐ +3점</span></div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--danger)&quot;>3일 지연</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task   &quot; data-id=&quot;urgent-x3&quot; data-tid=&quot;x3&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 담당</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task   &quot; data-id=&quot;urgent-x4&quot; data-tid=&quot;x4&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>세탁기 돌리기</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li></ul></section><section class=&quot;group&quot;>
+        <h3><i style=&quot;background:#1f9d8b&quot;></i>육아<small>0/2</small></h3>
+        <ul><li class=&quot;task  bonus &quot; data-id=&quot;x5&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>아기 목욕<span class=&quot;pts hot&quot;>⭐ +2점</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task   urgent&quot; data-id=&quot;urgent-x1&quot; data-tid=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;><span class=&quot;urgtag&quot;>긴급</span>병원 예약 전화</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;>🚨</button></li></ul></section><button class=&quot;sect-h&quot; id=&quot;doneToggle&quot; aria-expanded=&quot;false&quot;>완료한 일 <small>4</small><span class=&quot;fold&quot;>펼치기</span></button></div>
+      <button class=&quot;fab&quot; id=&quot;addFab&quot; aria-label=&quot;할일 추가&quot;>+</button></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;on&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div><div class="phone" role="img" aria-label="포인트 상점 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="포인트 상점 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;><div id=&quot;shopRoot&quot;>
+      <h2>상점</h2><p class=&quot;sub&quot;>모은 포인트로 쿠폰을 사요.</p>
+      <div class=&quot;card&quot;><div class=&quot;bal&quot;><div><div class=&quot;lbl&quot;>내 포인트</div><div class=&quot;big&quot; id=&quot;myBal&quot;>240<small>점</small></div></div><button class=&quot;mini&quot; data-act=&quot;history&quot;>사용 내역 ›</button></div></div>
+      <div class=&quot;seg&quot; id=&quot;shopSeg&quot; style=&quot;margin-top:4px&quot;>
+        <button data-seg=&quot;sale&quot; class=&quot;on&quot;>판매 중 <small>4</small></button>
+        <button data-seg=&quot;mine&quot; class=&quot;&quot;>내 쿠폰 <small>0</small></button>
+      </div>
+      <div class=&quot;shop-list&quot;><div class=&quot;card cp  &quot; data-id=&quot;cp37&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>육아 건너뛰고 회식 참석권</div><div class=&quot;price&quot;>100점</div></div><p class=&quot;desc&quot;>이번 주 중 하루, 육아 당번 면제</p><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cpa2&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>주말 늦잠 보장권<span class=&quot;stock&quot;>남은 2개 / 총 3개</span></div><div class=&quot;price&quot;>60점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  editable&quot; data-id=&quot;cp41&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>저녁 설거지 1회 면제</div><div class=&quot;price&quot;>150점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--a)&quot;>내가 올림</span></div><button class=&quot;mini&quot; data-act=&quot;withdraw&quot;>내리기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cp42&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>아주 비싼 소원권</div><div class=&quot;price&quot;>900점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 님이 올림</span></div><button class=&quot;btn sm off&quot; disabled=&quot;&quot;>660점 모자라요</button></div></div></div>
+      <button class=&quot;fab pill&quot; data-act=&quot;post&quot;>+ 쿠폰 올리기</button></div></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot; class=&quot;on&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+</div></section>
+
+
+  <section class="feature " id="today"><div class="wrap">
+    <div class="text"><p class="eyebrow">오늘</p><h2>체크하면, 누가 언제 했는지 남아요</h2><p class="lead">오늘 할 일을 같이 보고 체크하세요. 한 사람이 끝내면 다른 사람 폰에 바로 알림이 가요.</p><ul><li><b>색과 시간</b>으로 누가 했는지 한눈에 — 멤버마다 색이 정해져요</li><li><b>담당자</b>를 정하면 그 사람에게만 알림이 가요</li><li>끝낸 일은 아래로 <b>접어두고</b>, 필요할 때만 펼쳐 봐요</li><li>카테고리별로 묶여 보여요. 순서도 바꿀 수 있어요</li></ul></div>
+    <div class="visual"><div class="phone" role="img" aria-label="오늘 탭"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="오늘 탭" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;>
+      <div class=&quot;datebar&quot;>
+        <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 7일 토요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
+      </div>
+      <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>🏆 지호(나)</div>
+        <div class=&quot;cell&quot;><b>+4</b><span>오늘</span></div><div class=&quot;cell&quot;><b>124</b><span>보유</span></div></div><div class=&quot;rowp&quot;><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>현우</div>
+        <div class=&quot;cell&quot;><b>+2</b><span>오늘</span></div><div class=&quot;cell&quot;><b>76</b><span>보유</span></div></div></div>
+      <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;><i style=&quot;width:22.22222222222222%;background:var(--b)&quot;></i><i style=&quot;width:22.22222222222222%;background:var(--a)&quot;></i></div>
+        <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>4 / 9 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
+      <div id=&quot;list&quot;><section class=&quot;urgent-box&quot;><h3>🚨 긴급 <small>1</small></h3><ul><li class=&quot;task   urgent&quot; data-id=&quot;urgent-x1&quot; data-tid=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;><span class=&quot;urgtag&quot;>긴급</span>병원 예약 전화</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;>🚨</button></li></ul></section><div class=&quot;hotnote&quot;>⭐ 추가 포인트가 붙은 할일 2개 · 먼저 끝내면 최대 +3점 더!</div><section class=&quot;group&quot;>
+        <h3><i style=&quot;background:#e5731a&quot;></i>집안일<small>4/7</small></h3>
+        <ul><li class=&quot;task  bonus &quot; data-id=&quot;x2&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>밀린 빨래<span class=&quot;pts hot&quot;>⭐ +3점</span></div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--danger)&quot;>3일 지연</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task   &quot; data-id=&quot;urgent-x3&quot; data-tid=&quot;x3&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 담당</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task   &quot; data-id=&quot;urgent-x4&quot; data-tid=&quot;x4&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>세탁기 돌리기</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li></ul></section><section class=&quot;group&quot;>
+        <h3><i style=&quot;background:#1f9d8b&quot;></i>육아<small>0/2</small></h3>
+        <ul><li class=&quot;task  bonus &quot; data-id=&quot;x5&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>아기 목욕<span class=&quot;pts hot&quot;>⭐ +2점</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task   urgent&quot; data-id=&quot;urgent-x1&quot; data-tid=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;><span class=&quot;urgtag&quot;>긴급</span>병원 예약 전화</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;>🚨</button></li></ul></section><button class=&quot;sect-h&quot; id=&quot;doneToggle&quot; aria-expanded=&quot;false&quot;>완료한 일 <small>4</small><span class=&quot;fold&quot;>펼치기</span></button></div>
+      <button class=&quot;fab&quot; id=&quot;addFab&quot; aria-label=&quot;할일 추가&quot;>+</button></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;on&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+  </div></section>
+
+
+  <section class="feature flip" id="carry"><div class="wrap">
+    <div class="text"><p class="eyebrow">이월</p><h2>못 한 일은 내일로 넘어가요</h2><p class="lead">"분리수거함 비우기"처럼 꼭 끝내야 하는 일은 이월을 켜두세요. 못 끝내면 다음날로 자동으로 옮겨가고, 며칠 밀렸는지 보여줘요.</p><ul><li><b>"3일 지연"</b>처럼 밀린 일수가 빨갛게 표시돼요</li><li>밀린 날마다 <b>포인트가 +1점씩</b> 붙어서, 먼저 해치울 이유가 생겨요</li><li>"세탁기 돌리기 → 건조기 돌리기 → 빨래 개기"처럼 <b>이어지는 할일</b>을 걸어두면, 끝내는 순간 다음 일이 자동으로 생겨요</li></ul></div>
+    <div class="visual"><div class="phone" role="img" aria-label="이월과 지연 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="이월과 지연 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;>
+      <div class=&quot;datebar&quot;>
+        <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 7일 토요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
+      </div>
+      <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>🏆 현우</div>
+        <div class=&quot;cell&quot;><b>+1</b><span>오늘</span></div><div class=&quot;cell&quot;><b>1</b><span>보유</span></div></div><div class=&quot;rowp&quot;><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>지호(나)</div>
+        <div class=&quot;cell&quot;><b>+0</b><span>오늘</span></div><div class=&quot;cell&quot;><b>0</b><span>보유</span></div></div></div>
+      <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;><i style=&quot;width:20%;background:var(--b)&quot;></i></div>
+        <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>1 / 5 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
+      <div id=&quot;list&quot;><div class=&quot;hotnote&quot;>⭐ 추가 포인트가 붙은 할일 3개 · 먼저 끝내면 최대 +4점 더!</div><section class=&quot;group&quot;>
+        <h3><i style=&quot;background:#e5731a&quot;></i>집안일<small>1/5</small></h3>
+        <ul><li class=&quot;task  bonus &quot; data-id=&quot;x12&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>화장실 청소<span class=&quot;pts hot&quot;>⭐ +4점</span></div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--danger)&quot;>4일 지연</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task  bonus &quot; data-id=&quot;urgent-x13&quot; data-tid=&quot;x13&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>밀린 빨래<span class=&quot;pts hot&quot;>⭐ +2점</span></div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--danger)&quot;>2일 지연</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task  bonus &quot; data-id=&quot;urgent-x14&quot; data-tid=&quot;x14&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거함 비우기<span class=&quot;pts hot&quot;>⭐ +1점</span></div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 담당</span><span class=&quot;who&quot; style=&quot;--p:var(--danger)&quot;>1일 지연</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task   &quot; data-id=&quot;urgent-x15&quot; data-tid=&quot;x15&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>냉장고 정리</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li></ul></section><button class=&quot;sect-h&quot; id=&quot;doneToggle&quot; aria-expanded=&quot;false&quot;>완료한 일 <small>1</small><span class=&quot;fold&quot;>펼치기</span></button></div>
+      <button class=&quot;fab&quot; id=&quot;addFab&quot; aria-label=&quot;할일 추가&quot;>+</button></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;on&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+  </div></section>
+
+
+  <section class="feature " id="urgent"><div class="wrap">
+    <div class="text"><p class="eyebrow">긴급</p><h2>급한 일은 맨 위에 빨갛게</h2><p class="lead">🚨 버튼 하나로 "긴급"을 켜세요. 카테고리 안에는 그대로 두고, 맨 위 빨간 칸에 한 번 더 보여줘요.</p><ul><li>긴급으로 올리면 <b>모든 멤버에게 알림</b>이 가요</li><li>끝내면 빨간 칸에서 바로 사라져요</li><li>일회성 할일은 눌러서 <b>언제든 수정</b>할 수 있어요</li></ul></div>
+    <div class="visual"><div class="phone" role="img" aria-label="긴급 할일 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="긴급 할일 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;>
+      <div class=&quot;datebar&quot;>
+        <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 7일 토요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
+      </div>
+      <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>지호(나)</div>
+        <div class=&quot;cell&quot;><b>+0</b><span>오늘</span></div><div class=&quot;cell&quot;><b>0</b><span>보유</span></div></div><div class=&quot;rowp&quot;><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>현우</div>
+        <div class=&quot;cell&quot;><b>+0</b><span>오늘</span></div><div class=&quot;cell&quot;><b>0</b><span>보유</span></div></div></div>
+      <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;></div>
+        <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>0 / 5 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
+      <div id=&quot;list&quot;><section class=&quot;urgent-box&quot;><h3>🚨 긴급 <small>2</small></h3><ul><li class=&quot;task   urgent&quot; data-id=&quot;urgent-x17&quot; data-tid=&quot;x17&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;><span class=&quot;urgtag&quot;>긴급</span>병원 예약 전화</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;>🚨</button></li><li class=&quot;task   urgent&quot; data-id=&quot;urgent-x18&quot; data-tid=&quot;x18&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;><span class=&quot;urgtag&quot;>긴급</span>택배 반품 접수</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;>🚨</button></li></ul></section><section class=&quot;group&quot;>
+        <h3><i style=&quot;background:#e5731a&quot;></i>집안일<small>0/3</small></h3>
+        <ul><li class=&quot;task   urgent&quot; data-id=&quot;x18&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;><span class=&quot;urgtag&quot;>긴급</span>택배 반품 접수</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;>🚨</button></li><li class=&quot;task   &quot; data-id=&quot;urgent-x19&quot; data-tid=&quot;x19&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 담당</span></div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li><li class=&quot;task   &quot; data-id=&quot;urgent-x20&quot; data-tid=&quot;x20&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>화분 물주기</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li></ul></section><section class=&quot;group&quot;>
+        <h3><i style=&quot;background:#1f9d8b&quot;></i>육아<small>0/2</small></h3>
+        <ul><li class=&quot;task   urgent&quot; data-id=&quot;x17&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;><span class=&quot;urgtag&quot;>긴급</span>병원 예약 전화</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;>🚨</button></li><li class=&quot;task   &quot; data-id=&quot;urgent-x21&quot; data-tid=&quot;x21&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>아기 목욕</div></div>
+      <button class=&quot;x&quot; aria-label=&quot;삭제&quot;>×</button><button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;>🚨</button></li></ul></section></div>
+      <button class=&quot;fab&quot; id=&quot;addFab&quot; aria-label=&quot;할일 추가&quot;>+</button></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;on&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+  </div></section>
+
+
+  <section class="feature flip" id="routines"><div class="wrap">
+    <div class="text"><p class="eyebrow">루틴</p><h2>반복되는 일은 한 번만 등록</h2><p class="lead">매주 요일이나 N일마다, 시작일과 종료일까지 정해두면 앱을 열지 않아도 매일 자동으로 그날 할일이 만들어져요.</p><ul><li><b>매일·평일·주말</b>은 버튼 한 번, 원하는 요일도 고를 수 있어요</li><li>종료일을 비워두면 <b>계속</b> 만들어져요</li><li>이어지는 할일, 담당자, 카테고리도 루틴에 함께 정해둬요</li><li>일시정지했다가 언제든 다시 켤 수 있어요</li></ul></div>
+    <div class="visual"><div class="phone" role="img" aria-label="루틴 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="루틴 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;>
+      <h2>루틴</h2>
+      <p class=&quot;sub&quot;>정한 요일이나 주기마다 그날 할일에 자동으로 올라와요.</p>
+      <form class=&quot;card&quot; id=&quot;rForm&quot; autocomplete=&quot;off&quot;>
+        <h3 id=&quot;rFormTitle&quot;>새 루틴</h3>
+        <input id=&quot;rTitle&quot; placeholder=&quot;예: 설거지&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;>
+        <div class=&quot;row&quot;><select id=&quot;rCat&quot; aria-label=&quot;카테고리&quot;><option value=&quot;c1&quot;>집안일</option><option value=&quot;c2&quot;>육아</option><option value=&quot;&quot; selected=&quot;&quot;>카테고리 없음</option></select><select id=&quot;rWho&quot; aria-label=&quot;담당&quot;><option value=&quot;&quot; selected=&quot;&quot;>담당: 함께</option><option value=&quot;u1&quot;>담당: 나</option><option value=&quot;u2&quot;>담당: 현우</option></select></div>
+        <div class=&quot;seg&quot; id=&quot;rType&quot;>
+          <button type=&quot;button&quot; data-t=&quot;weekly&quot; class=&quot;on&quot;>매주 요일</button>
+          <button type=&quot;button&quot; data-t=&quot;interval&quot;>N일마다</button>
+        </div>
+        <div id=&quot;rWeekly&quot;>
+          <div class=&quot;days&quot; id=&quot;rDays&quot;><button type=&quot;button&quot; data-d=&quot;1&quot; class=&quot;on&quot;>월</button><button type=&quot;button&quot; data-d=&quot;2&quot; class=&quot;on&quot;>화</button><button type=&quot;button&quot; data-d=&quot;3&quot; class=&quot;on&quot;>수</button><button type=&quot;button&quot; data-d=&quot;4&quot; class=&quot;on&quot;>목</button><button type=&quot;button&quot; data-d=&quot;5&quot; class=&quot;on&quot;>금</button><button type=&quot;button&quot; data-d=&quot;6&quot; class=&quot;on&quot;>토</button><button type=&quot;button&quot; data-d=&quot;0&quot; class=&quot;on&quot;>일</button></div>
+          <div class=&quot;presets&quot;>
+            <button type=&quot;button&quot; data-p=&quot;all&quot;>매일</button>
+            <button type=&quot;button&quot; data-p=&quot;wk&quot;>평일</button>
+            <button type=&quot;button&quot; data-p=&quot;we&quot;>주말</button>
+          </div>
+        </div>
+        <label id=&quot;rIntervalRow&quot; hidden=&quot;&quot;>반복 주기(일)<input id=&quot;rInterval&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;365&quot; value=&quot;3&quot; inputmode=&quot;numeric&quot;></label>
+        <div class=&quot;row&quot;>
+          <label style=&quot;flex:1&quot;>시작일<input id=&quot;rStart&quot; type=&quot;date&quot; value=&quot;2026-11-07&quot; required=&quot;&quot;></label>
+          <label style=&quot;flex:1&quot;>종료일(선택)<input id=&quot;rEnd&quot; type=&quot;date&quot; value=&quot;&quot;></label>
+        </div>
+        <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;rChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+        <div class=&quot;row&quot;>
+          <button class=&quot;btn&quot; id=&quot;rSubmitBtn&quot; style=&quot;flex:1&quot;>루틴 추가</button>
+          <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;rCancelEdit&quot; style=&quot;flex:1&quot; hidden=&quot;&quot;>취소</button>
+        </div>
+      </form>
+      <h3 class=&quot;list-h&quot; id=&quot;rListH&quot;>등록된 루틴</h3>
+      <div id=&quot;rList&quot;>
+      <section class=&quot;group&quot;>
+        <h3><i style=&quot;background:#e5731a&quot;></i>집안일<small>4</small></h3>
+        <ul><li class=&quot;rt &quot; data-id=&quot;r25&quot;>
+      <div class=&quot;tt&quot;><div class=&quot;title&quot;>욕실 청소</div>
+        <div class=&quot;meta&quot;><span>3일마다 · 10/8부터</span></div></div>
+      <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
+      <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
+      <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li><li class=&quot;rt &quot; data-id=&quot;r24&quot;>
+      <div class=&quot;tt&quot;><div class=&quot;title&quot;>분리수거</div>
+        <div class=&quot;meta&quot;><span>수 · 10/8부터</span><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 담당</span></div></div>
+      <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
+      <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
+      <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li><li class=&quot;rt &quot; data-id=&quot;r23&quot;>
+      <div class=&quot;tt&quot;><div class=&quot;title&quot;>세탁기 돌리기</div>
+        <div class=&quot;meta&quot;><span>화 금 · 10/8부터</span><span>→ 건조기 돌리기 → 빨래 개기</span></div></div>
+      <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
+      <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
+      <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li><li class=&quot;rt &quot; data-id=&quot;r22&quot;>
+      <div class=&quot;tt&quot;><div class=&quot;title&quot;>설거지</div>
+        <div class=&quot;meta&quot;><span>매일 · 10/8부터</span></div></div>
+      <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
+      <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
+      <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li></ul>
+      </section>
+      <section class=&quot;group&quot;>
+        <h3><i style=&quot;background:#1f9d8b&quot;></i>육아<small>1</small></h3>
+        <ul><li class=&quot;rt &quot; data-id=&quot;r26&quot;>
+      <div class=&quot;tt&quot;><div class=&quot;title&quot;>분유 사기</div>
+        <div class=&quot;meta&quot;><span>월 목 · 10/8~1/6</span></div></div>
+      <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
+      <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
+      <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li></ul>
+      </section></div>
+      <div style=&quot;height:16px&quot;></div></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot; class=&quot;on&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+  </div></section>
+
+<section class="feature pair" id="points"><div class="wrap">
+  <div class="text"><p class="eyebrow">포인트</p><h2>해낸 만큼 쌓이고, 한눈에 보여요</h2>
+    <p class="lead">할일 하나를 끝내면 1점. 보너스를 붙이거나 이월된 일을 해내면 더 받아요. 점수는 끝내는 순간 서버가 계산해서, 조작할 수 없어요.</p>
+    <ul>
+      <li><b>⭐ 보너스</b>를 붙여서 "이건 먼저 해줘"를 표현해요. 보너스가 붙은 일은 목록 위쪽에 올라와요</li>
+      <li>오늘 탭에는 멤버별로 <b>오늘 번 점수</b>와 <b>보유 포인트</b>가 보여요</li>
+      <li><b>사용 내역</b>에서 번 것과 쓴 것을 한 줄씩 확인해요</li></ul></div>
+  <div class="visual"><div class="phone" role="img" aria-label="포인트 내역 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="포인트 내역 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;><div id=&quot;shopRoot&quot;>
+      <div class=&quot;hist-h&quot;><button class=&quot;back&quot; data-act=&quot;back&quot; aria-label=&quot;상점으로 돌아가기&quot;>‹</button><h2>포인트 내역</h2></div>
+      <div class=&quot;sum&quot;>
+        <div class=&quot;card&quot;><b>35</b><span>보유</span></div>
+        <div class=&quot;card&quot;><b>+135</b><span>번 점수</span></div>
+        <div class=&quot;card&quot;><b>-100</b><span>쓴 점수</span></div>
+      </div>
+      <div class=&quot;seg&quot; id=&quot;histSeg&quot; style=&quot;margin:0 0 10px&quot;>
+        <button data-hf=&quot;all&quot; class=&quot;on&quot;>전체</button><button data-hf=&quot;earn&quot; class=&quot;&quot;>번 것</button><button data-hf=&quot;spend&quot; class=&quot;&quot;>쓴 것</button>
+      </div><div class=&quot;card&quot; style=&quot;padding:0&quot;><div class=&quot;lg&quot;><div class=&quot;ic&quot;>🛍</div><div class=&quot;t&quot;><b>육아 건너뛰고 회식 참석권 구매</b><span>현우 님 쿠폰 · 오늘</span></div><div class=&quot;n m&quot;>-100</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>화장실 청소</b><span>할일 완료 · 보너스 +2 · 3일 지연 +3 · 오늘</span></div><div class=&quot;n p&quot;>+6</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>장보기</b><span>할일 완료 · 보너스 +2 · 오늘</span></div><div class=&quot;n p&quot;>+3</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>분리수거</b><span>할일 완료 · 오늘</span></div><div class=&quot;n p&quot;>+1</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>큰 청소</b><span>할일 완료 · 보너스 +100 · 11/6</span></div><div class=&quot;n p&quot;>+101</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>아기 목욕</b><span>할일 완료 · 23일 지연 +23 · 11/5</span></div><div class=&quot;n p&quot;>+24</div></div></div></div></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot; class=&quot;on&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+</div></section>
+
+<section class="feature flip" id="shop"><div class="wrap">
+  <div class="text"><p class="eyebrow">포인트 상점</p><h2>모은 포인트로 쿠폰을 사요</h2>
+    <p class="lead">"육아 건너뛰고 회식 참석권", "주말 늦잠 보장권" — 가족끼리 쿠폰을 만들어 올리고, 포인트로 사서 쓰는 우리끼리의 상점이에요.</p>
+    <ul>
+      <li>멤버 누구나 쿠폰을 <b>올리고, 개수(1~99장)</b>까지 정해요</li>
+      <li>산 사람의 포인트가 줄고, <b>판매자와 구매자 이름</b>이 함께 남아요</li>
+      <li>산 쿠폰은 <b>"사용하기"</b>로 사용 처리 — 올린 사람에게 알림이 가요</li>
+      <li>포인트가 모자라면 살 수 없고, 마지막 한 장은 <b>동시에 눌러도 한 사람만</b> 사요</li></ul></div>
+  <div class="visual"><div class="phone" role="img" aria-label="내 쿠폰 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="내 쿠폰 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;><div id=&quot;shopRoot&quot;>
+      <h2>상점</h2><p class=&quot;sub&quot;>모은 포인트로 쿠폰을 사요.</p>
+      <div class=&quot;card&quot;><div class=&quot;bal&quot;><div><div class=&quot;lbl&quot;>내 포인트</div><div class=&quot;big&quot; id=&quot;myBal&quot;>60<small>점</small></div></div><button class=&quot;mini&quot; data-act=&quot;history&quot;>사용 내역 ›</button></div></div>
+      <div class=&quot;seg&quot; id=&quot;shopSeg&quot; style=&quot;margin-top:4px&quot;>
+        <button data-seg=&quot;sale&quot; class=&quot;&quot;>판매 중 <small>0</small></button>
+        <button data-seg=&quot;mine&quot; class=&quot;on&quot;>내 쿠폰 <small>1</small></button>
+      </div>
+      <div class=&quot;shop-list&quot;><div class=&quot;sect-h&quot;>사용 가능 <small>1</small></div><div class=&quot;card cp  &quot; data-id=&quot;cp44&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>육아 건너뛰고 회식 참석권</div><div class=&quot;price&quot;>100점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 님에게서 구매 · 오늘</span></div><button class=&quot;btn sm&quot; data-act=&quot;use&quot;>사용하기</button></div></div><div class=&quot;sect-h&quot;>사용함 <small>1</small></div><div class=&quot;card cp used &quot; data-id=&quot;cp45&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>주말 늦잠 보장권</div><div class=&quot;price&quot;>40점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 님에게서 구매</span><span>11/6 사용함</span></div></div></div><div class=&quot;sect-h&quot;>내가 올려서 팔린 쿠폰 <small>1</small></div><div class=&quot;card cp  &quot; data-id=&quot;cp46&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>안마 30분권</div><div class=&quot;price&quot;>80점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>현우 님이 구매 · 11/6</span><span>아직 안 씀</span></div></div></div></div>
+      <button class=&quot;fab pill&quot; data-act=&quot;post&quot;>+ 쿠폰 올리기</button></div></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot; class=&quot;on&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div><div class="phone" role="img" aria-label="쿠폰 올리기 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="쿠폰 올리기 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;><div id=&quot;shopRoot&quot;>
+      <h2>상점</h2><p class=&quot;sub&quot;>모은 포인트로 쿠폰을 사요.</p>
+      <div class=&quot;card&quot;><div class=&quot;bal&quot;><div><div class=&quot;lbl&quot;>내 포인트</div><div class=&quot;big&quot; id=&quot;myBal&quot;>130<small>점</small></div></div><button class=&quot;mini&quot; data-act=&quot;history&quot;>사용 내역 ›</button></div></div>
+      <div class=&quot;seg&quot; id=&quot;shopSeg&quot; style=&quot;margin-top:4px&quot;>
+        <button data-seg=&quot;sale&quot; class=&quot;on&quot;>판매 중 <small>0</small></button>
+        <button data-seg=&quot;mine&quot; class=&quot;&quot;>내 쿠폰 <small>0</small></button>
+      </div>
+      <div class=&quot;shop-list&quot;><p class=&quot;empty&quot;>판매 중인 쿠폰이 없어요.<br>아래 버튼으로 첫 쿠폰을 올려보세요.</p></div>
+      <button class=&quot;fab pill&quot; data-act=&quot;post&quot;>+ 쿠폰 올리기</button></div></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot; class=&quot;on&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;육아 건너뛰고 회식 참석권&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;이번 주 중 하루&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;100&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;3&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+</div></section>
+
+<section class="feature" id="groups"><div class="wrap">
+  <div class="text"><p class="eyebrow">여러 그룹</p><h2>가족도, 룸메이트도, 모임도</h2>
+    <p class="lead">그룹을 여러 개 만들거나 참여할 수 있어요. 앱을 켜면 마지막에 쓰던 그룹으로 바로 들어가고, 홈에서 다른 그룹으로 옮겨가요.</p>
+    <ul>
+      <li>그룹마다 <b>이름</b>이 있고, 내 이름도 그룹마다 따로 정해요</li>
+      <li>포인트·쿠폰·카테고리·루틴이 <b>그룹 안에서만</b> 쌓여요</li>
+      <li>승인 대기 중인 요청과 처리할 요청이 홈에서 보여요</li>
+      <li>그룹이 둘 이상이면 알림 제목에 <b>[그룹 이름]</b>이 붙어서 헷갈리지 않아요</li></ul></div>
+  <div class="visual"><div class="phone" role="img" aria-label="그룹 홈 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="그룹 홈 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot; hidden=&quot;&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;>
+      <h2>WeDo</h2><p class=&quot;sub&quot; style=&quot;margin-bottom:12px&quot;>참여 중인 그룹</p>
+      <div class=&quot;acts&quot;><button class=&quot;btn&quot; id=&quot;hNew&quot;>+ 새로 만들기</button><button class=&quot;btn ghost&quot; id=&quot;hJoin&quot;>코드로 참여</button></div>
+      <div id=&quot;hList&quot;><button class=&quot;card hh&quot; data-hid=&quot;h1&quot;>
+      <span class=&quot;ic&quot;>🏠</span>
+      <span class=&quot;tx&quot;><b>우리 집<span class=&quot;pill2 red&quot;>참여 요청 2</span></b>
+        <span>멤버 2명 · 내 이름 지호 · 방장</span></span>
+      <span class=&quot;go&quot;>›</span></button><button class=&quot;card hh&quot; data-hid=&quot;h2&quot;>
+      <span class=&quot;ic&quot;>🛋</span>
+      <span class=&quot;tx&quot;><b>룸메이트</b>
+        <span>멤버 2명 · 내 이름 아빠</span></span>
+      <span class=&quot;go&quot;>›</span></button><div class=&quot;card hh waiting&quot; data-wid=&quot;h3&quot;>
+      <span class=&quot;ic&quot;>⏳</span>
+      <span class=&quot;tx&quot;><b>회사 동호회<span class=&quot;pill2 wait&quot;>승인 대기 중</span></b><span>방장이 수락하면 들어가져요</span></span>
+      <button class=&quot;mini&quot; data-act=&quot;cancel&quot;>요청 취소</button></div></div>
+      <p class=&quot;hint&quot; id=&quot;hWaitHint&quot;></p></main>
+  <nav id=&quot;tabs&quot; hidden=&quot;&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;on&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot; class=&quot;show&quot;>참여 요청을 보냈어요. 방장이 수락하면 목록에 나타나요</div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;WORK-9999&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;지호&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+</div></section>
+
+<section class="feature flip" id="safety"><div class="wrap">
+  <div class="text"><p class="eyebrow">함께 쓰는 안전</p><h2>초대 코드와 방장 수락으로 지켜요</h2>
+    <p class="lead">코드를 아는 사람이 바로 들어오지 못해요. 방장이 수락해야 같은 그룹이 되고, 누가 들어오려는지 알림으로 알려줘요.</p>
+    <ul>
+      <li><b>초대 코드</b>를 복사하거나 공유해서 초대해요</li>
+      <li>방장은 참여 요청을 <b>수락·거절</b>하고, 멤버를 내보낼 수 있어요</li>
+      <li>폰을 바꾸면 같은 이름으로 요청해서 <b>기록을 그대로 이어받아요</b></li>
+      <li>방장이 아닌 멤버는 언제든 <b>그룹에서 나갈 수 있어요</b></li></ul></div>
+  <div class="visual"><div class="phone" role="img" aria-label="설정 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="설정 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로&quot;>‹ 홈 <small>· <span id=&quot;barName&quot;>우리 집</span></small></button></div>
+  <main id=&quot;main&quot;>
+      <h2>설정</h2>
+      <section class=&quot;card&quot;>
+        <h3>그룹</h3>
+        <form id=&quot;gnameForm&quot;><label>그룹 이름<div class=&quot;row&quot;>
+          <input id=&quot;gName&quot; maxlength=&quot;40&quot; required=&quot;&quot; aria-label=&quot;그룹 이름&quot; value=&quot;우리 집&quot;>
+          <button class=&quot;btn&quot; id=&quot;gNameBtn&quot;>저장</button></div></label></form>
+        <p class=&quot;hint&quot; id=&quot;gNameHint&quot;></p>
+      </section>
+      <section class=&quot;card&quot;>
+        <h3>초대 코드</h3>
+        <div class=&quot;code&quot; id=&quot;codeBox&quot;>ABCD-1234</div>
+        <div class=&quot;row&quot;>
+          <button class=&quot;btn ghost&quot; id=&quot;copyCode&quot; style=&quot;flex:1&quot;>코드 복사</button>
+          <button class=&quot;btn ghost&quot; id=&quot;shareCode&quot; style=&quot;flex:1&quot;>코드 공유하기</button>
+        </div>
+        <p class=&quot;hint&quot;>상대방이 앱에서 ‘코드로 참여’를 고르고 이 코드를 입력하면 참여 요청이 가요. 방장이 수락하면 연결돼요. 가족, 룸메이트 등 여러 명도 함께 쓸 수 있어요.</p>
+      </section>
+      <section class=&quot;card&quot; id=&quot;reqCard&quot;>
+        <h3>참여 요청</h3>
+        <ul id=&quot;reqList&quot;><li class=&quot;mrow&quot; data-uid=&quot;u7&quot;><div class=&quot;tt&quot;><b>민수</b><div class=&quot;meta&quot;><span>새 멤버로 참여 요청</span></div></div>
+        <button class=&quot;mini&quot; data-act=&quot;ok&quot;>수락</button><button class=&quot;mini&quot; data-act=&quot;no&quot;>거절</button></li><li class=&quot;mrow&quot; data-uid=&quot;u8&quot;><div class=&quot;tt&quot;><b>현우</b><div class=&quot;meta&quot;><span>기존 멤버의 기기 교체 요청 (같은 이름)</span></div></div>
+        <button class=&quot;mini&quot; data-act=&quot;ok&quot;>수락</button><button class=&quot;mini&quot; data-act=&quot;no&quot;>거절</button></li></ul>
+        <p class=&quot;hint&quot;>모르는 사람이면 거절하세요. 같은 이름의 기존 멤버가 기기를 바꾸는 요청도 여기서 수락해요.</p>
+      </section>
+      <section class=&quot;card&quot;>
+        <h3>멤버</h3>
+        <ul id=&quot;mList&quot;><li class=&quot;mrow&quot;><i class=&quot;swatch&quot; style=&quot;background:var(--a)&quot;></i><span class=&quot;tt&quot;>지호 <small>(나)</small> <small>방장</small></span>
+        </li><li class=&quot;mrow&quot;><i class=&quot;swatch&quot; style=&quot;background:var(--b)&quot;></i><span class=&quot;tt&quot;>현우</span>
+        <button class=&quot;mini&quot; data-act=&quot;kick&quot; data-uid=&quot;u2&quot;>내보내기</button></li></ul>
+        <p class=&quot;hint&quot; style=&quot;margin:8px 0 6px&quot;>이 그룹에서 쓰는 내 이름이에요. 그룹마다 따로 정할 수 있어요.</p>
+        <form id=&quot;nameForm&quot;><div class=&quot;row&quot;>
+          <input id=&quot;myName&quot; maxlength=&quot;20&quot; required=&quot;&quot; aria-label=&quot;내 이름&quot; value=&quot;지호&quot;>
+          <button class=&quot;btn&quot;>이름 저장</button></div></form>
+      </section>
+      <section class=&quot;card stack&quot;>
+        <h3>푸시 알림</h3>
+        <p class=&quot;hint&quot; id=&quot;pushStatus&quot;>할일 추가·완료 알림을 받으려면 켜주세요.</p>
+        <button class=&quot;btn ghost&quot; id=&quot;pushBtn&quot;>알림 받기</button>
+        <p class=&quot;hint&quot; id=&quot;pushDiag&quot;>권한 아직 안 정함 · 구독 꺼짐 · 계정 연결 됨</p>
+        <div class=&quot;row&quot; id=&quot;pushTools&quot; hidden=&quot;&quot;>
+          <button class=&quot;btn ghost&quot; id=&quot;pushTest&quot; style=&quot;flex:1&quot;>테스트 알림</button>
+          <button class=&quot;btn ghost&quot; id=&quot;pushRelink&quot; style=&quot;flex:1&quot;>다시 연결</button>
+        </div>
+        <p class=&quot;hint&quot; id=&quot;pushTestResult&quot;></p>
+      </section>
+      <section class=&quot;card&quot;>
+        <h3>카테고리</h3>
+        <ul id=&quot;cList&quot;><li class=&quot;crow&quot; data-id=&quot;c1&quot;><i class=&quot;swatch&quot; style=&quot;background:#e5731a&quot;></i><span class=&quot;tt&quot;>집안일</span>
+        <button class=&quot;mini&quot; data-act=&quot;up&quot; aria-label=&quot;위로 이동&quot; disabled=&quot;&quot;>▲</button><button class=&quot;mini&quot; data-act=&quot;down&quot; aria-label=&quot;아래로 이동&quot;>▼</button>
+        <button class=&quot;mini&quot; data-act=&quot;rename&quot;>이름 변경</button><button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;카테고리 삭제&quot;>×</button></li><li class=&quot;crow&quot; data-id=&quot;c2&quot;><i class=&quot;swatch&quot; style=&quot;background:#1f9d8b&quot;></i><span class=&quot;tt&quot;>육아</span>
+        <button class=&quot;mini&quot; data-act=&quot;up&quot; aria-label=&quot;위로 이동&quot;>▲</button><button class=&quot;mini&quot; data-act=&quot;down&quot; aria-label=&quot;아래로 이동&quot; disabled=&quot;&quot;>▼</button>
+        <button class=&quot;mini&quot; data-act=&quot;rename&quot;>이름 변경</button><button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;카테고리 삭제&quot;>×</button></li></ul>
+        <form id=&quot;cForm&quot; autocomplete=&quot;off&quot;><div class=&quot;row&quot;>
+          <input id=&quot;cName&quot; placeholder=&quot;새 카테고리&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;>
+          <input id=&quot;cColor&quot; type=&quot;color&quot; value=&quot;#3563e9&quot; aria-label=&quot;색상&quot;>
+          <button class=&quot;btn&quot;>추가</button></div></form>
+        <p class=&quot;hint&quot;>카테고리를 지워도 그 안의 할일은 ‘카테고리 없음’으로 남아요.</p>
+      </section>
+      <section class=&quot;card&quot; id=&quot;leaveCard&quot;>
+        <button class=&quot;btn ghost danger&quot; id=&quot;leaveBtn&quot; style=&quot;width:100%&quot; hidden=&quot;&quot;>이 그룹에서 나가기</button>
+        <p class=&quot;hint&quot; id=&quot;leaveHint&quot; style=&quot;margin:8px 0 0&quot;>방장은 이 그룹에서 나갈 수 없어요.</p>
+      </section>
+      <div style=&quot;height:16px&quot;></div></main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert on&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;addSheetTitle&quot;>할일 추가</h3>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 먼저 눌러주길 바랄 때<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> 🚨 긴급</label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+</div></section>
+
+<section class="feature pair" id="push"><div class="wrap">
+  <div class="text"><p class="eyebrow">알림</p><h2>필요한 순간에만 울려요</h2>
+    <p class="lead">누가 일을 끝냈을 때, 급한 일이 생겼을 때, 쿠폰이 올라오거나 팔렸을 때, 참여 요청이 왔을 때 알려드려요.</p>
+    <ul><li>할일 추가·완료, 완료 취소, 긴급</li><li>새 쿠폰, 쿠폰 구매·사용</li><li>참여 요청, 수락, 내보내기</li></ul></div>
+  <div class="visual"><div class="pushes">
+    <div class="push"><img src="icon-192.png" alt=""><div><b>할일 완료</b><span>현우님이 "설거지"를 완료했어요</span></div><small>지금</small></div>
+    <div class="push red"><img src="icon-192.png" alt=""><div><b>🚨 긴급</b><span>현우님이 "병원 예약 전화"을(를) 긴급으로 올렸어요</span></div><small>2분 전</small></div>
+    <div class="push"><img src="icon-192.png" alt=""><div><b>새 쿠폰</b><span>현우님이 "주말 늦잠 보장권" 쿠폰을 60점에 올렸어요 (3장)</span></div><small>어제</small></div>
+    <div class="push"><img src="icon-192.png" alt=""><div><b>[룸메이트] 참여 요청</b><span>민수님이 참여를 요청했어요</span></div><small>어제</small></div>
+  </div></div>
+</div></section>
+
+<section class="start" id="start"><div class="wrap">
+  <h2>3분이면 시작해요</h2><p class="lead">로그인도, 회원가입도 필요 없어요.</p>
+  <div class="steps">
+    <div class="step"><h3>앱 열기</h3><p>링크를 열고, 아이폰이면 사파리 공유 버튼 → <b>홈 화면에 추가</b>를 눌러요. 앱 아이콘이 생겨요.</p></div>
+    <div class="step"><h3>그룹 만들기</h3><p>그룹 이름과 내 이름을 정하면 <b>초대 코드</b>가 만들어져요. 이미 있는 그룹이면 코드로 참여해요.</p></div>
+    <div class="step"><h3>알림 켜기</h3><p>설정에서 알림을 켜두면 가족이 일을 끝낼 때마다 폰으로 알려줘요.</p></div>
+  </div>
+  <p style="margin-top:28px"><a class="cta" href="https://dreamy-kleicha-f57f2b.netlify.app">WeDo 열기</a></p>
+</div></section>
+
+<section class="safe"><div class="wrap">
+  <h2 style="font-size:28px;margin:0">안심하고 쓰세요</h2>
+  <div class="grid">
+    <div class="tile"><h3>우리 그룹만 보여요</h3><p>그룹 멤버만 그 그룹의 할일과 포인트를 볼 수 있어요. 다른 그룹에는 닿지 않아요.</p></div>
+    <div class="tile"><h3>점수는 서버가 계산해요</h3><p>포인트와 쿠폰 구매는 서버가 확인해서, 앱을 고쳐도 점수를 부풀릴 수 없어요.</p></div>
+    <div class="tile"><h3>방장이 문을 지켜요</h3><p>초대 코드가 새어도 방장이 수락하기 전에는 들어올 수 없어요.</p></div>
+    <div class="tile"><h3>실시간으로 맞춰져요</h3><p>누가 체크하면 다른 사람 화면도 바로 바뀌어요. 폰 두 대가 어긋나지 않아요.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><a class="brand" href="#top"><img src="icon-192.png" alt="">WeDo</a><span>함께 쓰는 할일 목록</span><a href="https://dreamy-kleicha-f57f2b.netlify.app" style="margin-left:auto">앱 열기 →</a></div></footer>
+<script>
+document.body.classList.remove('no-js');
+(function(){var els=[].slice.call(document.querySelectorAll('.feature'));
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+els.forEach(function(e){io.observe(e)})})();
+</script>
+</body>
+</html>
