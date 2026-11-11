@@ -110,7 +110,7 @@ footer .brand{color:var(--ink)}
 <body class="no-js">
 <header class="top"><div class="wrap">
   <a class="brand" href="#top"><img src="icon-192.png" alt="">WeDo</a>
-  <nav><a href="#routines">루틴</a><a href="#kids">아이와 함께</a><a href="#today">오늘</a><a href="#shop">상점</a><a href="#groups">여러 그룹</a><a href="#start">시작하기</a><a class="cta small" href="https://wedo-todo.netlify.app">앱 열기</a></nav>
+  <nav><a href="#routines">루틴</a><a href="#record">기록</a><a href="#kids">아이와 함께</a><a href="#today">오늘</a><a href="#shop">상점</a><a href="#groups">여러 그룹</a><a href="#start">시작하기</a><a class="cta small" href="https://wedo-todo.netlify.app">앱 열기</a></nav>
 </div></header>
 
 <section class="hero" id="top"><div class="wrap">
@@ -132,12 +132,13 @@ footer .brand{color:var(--ink)}
     <div id=&quot;view&quot;>
       <div class=&quot;datebar&quot;>
         <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
-        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 8일 일요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 12일 목요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
         <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
       </div>
       <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>1위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>재이아빠 🏆</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+5</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>79</b></div></div><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>2위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>재이맘(나)</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+4</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>124</b></div></div></div>
+      <button type=&quot;button&quot; class=&quot;reclink&quot; id=&quot;recLink&quot;>이번 주 기록 보기 <span aria-hidden=&quot;true&quot;>›</span></button>
       <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;><i style=&quot;width:30%;background:var(--b)&quot;></i><i style=&quot;width:20%;background:var(--a)&quot;></i></div>
         <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>5 / 10 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
       <div id=&quot;list&quot;><section class=&quot;urgent-box&quot;><h3>긴급 <small>1</small></h3><ul><li class=&quot;task    urgent&quot; data-id=&quot;urgent-x1&quot; data-tid=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
@@ -148,10 +149,10 @@ footer .brand{color:var(--ink)}
         <ul><li class=&quot;task    &quot; data-id=&quot;x2&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>밀린 빨래 개기</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--danger)&quot;>3일 지연</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x3&quot; data-tid=&quot;x3&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x3&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x4&quot; data-tid=&quot;x4&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x4&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>세탁기 돌리기</div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><section class=&quot;group&quot;>
@@ -159,7 +160,7 @@ footer .brand{color:var(--ink)}
         <ul><li class=&quot;task   bonus &quot; data-id=&quot;x5&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>재이 목욕시키기<span class=&quot;pts hot&quot;>⭐ +2점</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    urgent&quot; data-id=&quot;urgent-x1&quot; data-tid=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    urgent&quot; data-id=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>재이 예방접종 예약 전화</div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><button class=&quot;sect-h&quot; id=&quot;doneToggle&quot; aria-expanded=&quot;false&quot;>완료한 일 <small>5</small><span class=&quot;fold&quot;>펼치기</span></button></div>
@@ -232,7 +233,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -286,10 +288,10 @@ footer .brand{color:var(--ink)}
       <h2>상점</h2><p class=&quot;sub&quot;>모은 포인트로 쿠폰을 사요.</p>
       <div class=&quot;card&quot;><div class=&quot;bal&quot;><div><div class=&quot;lbl&quot;>내 포인트</div><div class=&quot;big&quot; id=&quot;myBal&quot;>240<small>점</small></div></div><button class=&quot;mini&quot; data-act=&quot;history&quot;>사용 내역 ›</button></div></div>
       <div class=&quot;seg&quot; id=&quot;shopSeg&quot; style=&quot;margin-top:4px&quot;>
-        <button data-seg=&quot;sale&quot; class=&quot;on&quot;>판매 중 <small>5</small></button>
+        <button data-seg=&quot;sale&quot; class=&quot;on&quot;>판매중 <small>5</small></button>
         <button data-seg=&quot;mine&quot; class=&quot;&quot;>내 쿠폰 <small>0</small></button>
       </div>
-      <div class=&quot;shop-list&quot;><div class=&quot;card cp  &quot; data-id=&quot;cp61&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>육아 건너뛰고 회식 참석권</div><div class=&quot;price&quot;>100점</div></div><p class=&quot;desc&quot;>이번 주 중 하루, 육아 당번 면제</p><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cpa2&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>주말 늦잠 보장권<span class=&quot;stock&quot;>남은 2개 / 총 3개</span></div><div class=&quot;price&quot;>60점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cp65&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>게임 1시간권</div><div class=&quot;price&quot;>10점</div></div><p class=&quot;desc&quot;>재이 자는 시간 한정</p><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cp66&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>재이 재우기 1회 대신</div><div class=&quot;price&quot;>120점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cp67&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>치맥 데이트권</div><div class=&quot;price&quot;>900점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm off&quot; disabled=&quot;&quot;>660점 모자라요</button></div></div><button class=&quot;sect-h&quot; id=&quot;soldToggle&quot; aria-expanded=&quot;false&quot;>판매 완료 <small>1</small><span class=&quot;fold&quot;>펼치기</span></button></div>
+      <div class=&quot;shop-list&quot;><p class=&quot;hint tabhint&quot;>다른 사람이 올린 쿠폰은 포인트로 살 수 있어요.</p><div class=&quot;sect-h&quot;>구매할 수 있는 쿠폰 <small>5</small></div><div class=&quot;card cp  &quot; data-id=&quot;cp94&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>육아 건너뛰고 회식 참석권</div><div class=&quot;price&quot;>100점</div></div><p class=&quot;desc&quot;>이번 주 중 하루, 육아 당번 면제</p><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cpa2&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>주말 늦잠 보장권<span class=&quot;stock&quot;>남은 2개 / 총 3개</span></div><div class=&quot;price&quot;>60점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cp98&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>게임 1시간권</div><div class=&quot;price&quot;>10점</div></div><p class=&quot;desc&quot;>재이 자는 시간 한정</p><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cp99&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>재이 재우기 1회 대신</div><div class=&quot;price&quot;>120점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cp100&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>치맥 데이트권</div><div class=&quot;price&quot;>900점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm off&quot; disabled=&quot;&quot;>660점 모자라요</button></div></div><div class=&quot;mgmt&quot; id=&quot;myCoupons&quot;><div class=&quot;mh&quot;><b>내가 올린 쿠폰 관리</b><small>판매 중 0 · 팔림 0</small></div><p class=&quot;hint&quot;>아직 올린 쿠폰이 없어요. 아래 &quot;+ 쿠폰 올리기&quot;로 올려보세요.</p></div><button class=&quot;sect-h&quot; id=&quot;soldToggle&quot; aria-expanded=&quot;false&quot;>판매 완료 <small>1</small><span class=&quot;fold&quot;>펼치기</span></button></div>
       <button class=&quot;fab pill&quot; data-act=&quot;post&quot;>+ 쿠폰 올리기</button></div></div>
   </main>
   <nav id=&quot;tabs&quot;>
@@ -359,7 +361,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -427,17 +430,17 @@ footer .brand{color:var(--ink)}
         <h3><i style=&quot;background:#e5731a&quot;></i>집안일<small>3</small></h3>
         <ul><li class=&quot;rt &quot; data-id=&quot;r25&quot;>
       <div class=&quot;tt&quot;><div class=&quot;title&quot;>분리수거</div>
-        <div class=&quot;meta&quot;><span>수 · 10/9부터</span><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span></div></div>
+        <div class=&quot;meta&quot;><span>수 · 10/13부터</span><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span></div></div>
       <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
       <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
       <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li><li class=&quot;rt &quot; data-id=&quot;r24&quot;>
       <div class=&quot;tt&quot;><div class=&quot;title&quot;>세탁기 돌리기</div>
-        <div class=&quot;meta&quot;><span>화 금 · 10/9부터</span><span>→ 건조기 돌리기 → 빨래 개기</span></div></div>
+        <div class=&quot;meta&quot;><span>화 금 · 10/13부터</span><span>→ 건조기 돌리기 → 빨래 개기</span></div></div>
       <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
       <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
       <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li><li class=&quot;rt &quot; data-id=&quot;r23&quot;>
       <div class=&quot;tt&quot;><div class=&quot;title&quot;>설거지</div>
-        <div class=&quot;meta&quot;><span>매일 · 10/9부터</span></div></div>
+        <div class=&quot;meta&quot;><span>매일 · 10/13부터</span></div></div>
       <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
       <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
       <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li></ul>
@@ -446,12 +449,12 @@ footer .brand{color:var(--ink)}
         <h3><i style=&quot;background:#1f9d8b&quot;></i>재이 육아<small>2</small></h3>
         <ul><li class=&quot;rt &quot; data-id=&quot;r27&quot;>
       <div class=&quot;tt&quot;><div class=&quot;title&quot;>재이 분유·이유식 재료 사기</div>
-        <div class=&quot;meta&quot;><span>월 목 · 10/9~1/7</span></div></div>
+        <div class=&quot;meta&quot;><span>월 목 · 10/13~1/11</span></div></div>
       <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
       <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
       <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li><li class=&quot;rt &quot; data-id=&quot;r26&quot;>
       <div class=&quot;tt&quot;><div class=&quot;title&quot;>재이 목욕시키기</div>
-        <div class=&quot;meta&quot;><span>매일 · 10/9부터</span><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span></div></div>
+        <div class=&quot;meta&quot;><span>매일 · 10/13부터</span><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span></div></div>
       <button class=&quot;mini&quot; data-act=&quot;edit&quot;>수정</button>
       <button class=&quot;mini&quot; data-act=&quot;pause&quot;>일시정지</button>
       <button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;루틴 삭제&quot;>×</button></li></ul>
@@ -525,7 +528,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -579,12 +583,13 @@ footer .brand{color:var(--ink)}
     <div id=&quot;view&quot;>
       <div class=&quot;datebar&quot;>
         <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
-        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 8일 일요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 12일 목요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
         <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
       </div>
       <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>1위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>재이아빠 🏆</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+1</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>1</b></div></div><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>–</span><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>재이맘(나)</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+0</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>0</b></div></div></div>
+      <button type=&quot;button&quot; class=&quot;reclink&quot; id=&quot;recLink&quot;>이번 주 기록 보기 <span aria-hidden=&quot;true&quot;>›</span></button>
       <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;><i style=&quot;width:33.33333333333333%;background:var(--b)&quot;></i></div>
         <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>1 / 3 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
       <div id=&quot;list&quot;><section class=&quot;group&quot;>
@@ -639,11 +644,11 @@ footer .brand{color:var(--ink)}
 </div>
 <div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot;>
   <div class=&quot;sheet&quot;>
-    <div class=&quot;in-head&quot;><h3 id=&quot;addSheetTitle&quot;>11월 8일 할일 추가</h3><button type=&quot;button&quot; class=&quot;mini del&quot; id=&quot;addDelete&quot; hidden=&quot;&quot;>삭제</button></div>
+    <div class=&quot;in-head&quot;><h3 id=&quot;addSheetTitle&quot;>11월 12일 할일 추가</h3><button type=&quot;button&quot; class=&quot;mini del&quot; id=&quot;addDelete&quot; hidden=&quot;&quot;>삭제</button></div>
     <p id=&quot;addRoutineNote&quot; class=&quot;hint&quot; hidden=&quot;&quot;></p>
     <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
       <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;세탁기 돌리기&quot;>
-      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;><option value=&quot;c1&quot;>집안일</option><option value=&quot;c2&quot;>재이 육아</option><option value=&quot;&quot; selected=&quot;&quot;>카테고리 없음</option></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;><option value=&quot;&quot; selected=&quot;&quot;>담당: 함께</option><option value=&quot;u1&quot;>담당: 나</option><option value=&quot;u2&quot;>담당: 재이아빠</option></select></div>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;><option value=&quot;c1&quot; selected=&quot;&quot;>집안일</option><option value=&quot;c2&quot;>재이 육아</option><option value=&quot;&quot;>카테고리 없음</option></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;><option value=&quot;&quot; selected=&quot;&quot;>담당: 함께</option><option value=&quot;u1&quot;>담당: 나</option><option value=&quot;u2&quot;>담당: 재이아빠</option></select></div>
       <label>추가 포인트(선택) — 다른 사람이 먼저 해주길 바랄 때 (내가 붙인 일은 내가 완료할 수 없어요)<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
       <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> <span>긴급</span><svg class=&quot;zap&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;17&quot; height=&quot;17&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></label>
       <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
@@ -667,7 +672,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -721,12 +727,13 @@ footer .brand{color:var(--ink)}
     <div id=&quot;view&quot;>
       <div class=&quot;datebar&quot;>
         <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
-        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 8일 일요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 12일 목요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
         <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
       </div>
       <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>1위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>재이맘(나) 🏆</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+1</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>1</b></div></div><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>1위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>재이아빠 🏆</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+1</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>1</b></div></div></div>
+      <button type=&quot;button&quot; class=&quot;reclink&quot; id=&quot;recLink&quot;>이번 주 기록 보기 <span aria-hidden=&quot;true&quot;>›</span></button>
       <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;><i style=&quot;width:20%;background:var(--a)&quot;></i><i style=&quot;width:20%;background:var(--b)&quot;></i></div>
         <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>2 / 5 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
       <div id=&quot;list&quot;><section class=&quot;group&quot;>
@@ -734,7 +741,7 @@ footer .brand{color:var(--ink)}
         <ul><li class=&quot;task    &quot; data-id=&quot;x31&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>건조기 돌리기</div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x32&quot; data-tid=&quot;x32&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x32&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span></div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><section class=&quot;group&quot;>
@@ -742,14 +749,12 @@ footer .brand{color:var(--ink)}
         <ul><li class=&quot;task    &quot; data-id=&quot;x33&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>재이 목욕시키기</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><button class=&quot;sect-h&quot; id=&quot;doneToggle&quot; aria-expanded=&quot;true&quot;>완료한 일 <small>2</small><span class=&quot;fold&quot;>접기</span></button><section class=&quot;group&quot;>
-        <h3 class=&quot;fold&quot;><button type=&quot;button&quot; class=&quot;cat-h&quot; data-cat=&quot;c1&quot; aria-expanded=&quot;true&quot;><i style=&quot;background:#e5731a&quot;></i>집안일<small>2</small><svg class=&quot;chev&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;m6 9 6 6 6-6&quot;></path></svg></button></h3>
-        <ul><li class=&quot;task done   &quot; data-id=&quot;x34&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><button class=&quot;sect-h&quot; id=&quot;doneToggle&quot; aria-expanded=&quot;true&quot;>완료한 일 <small>2</small><span class=&quot;fold&quot;>접기</span></button><section class=&quot;group&quot;><ul><li class=&quot;task done   &quot; data-id=&quot;x34&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;true&quot;></button>
-      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>세탁기 돌리기</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--a)&quot;>나 09:12</span></div></div>
-      <span class=&quot;act ph&quot; aria-hidden=&quot;true&quot;></span></li><li class=&quot;task done   &quot; data-id=&quot;urgent-x35&quot; data-tid=&quot;x35&quot; style=&quot;--p:var(--b)&quot;>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>세탁기 돌리기</div><div class=&quot;meta&quot;><span class=&quot;who cat-tag&quot; style=&quot;--p:#e5731a&quot;>집안일</span><span class=&quot;who&quot; style=&quot;--p:var(--a)&quot;>나 09:12</span></div></div>
+      <span class=&quot;act ph&quot; aria-hidden=&quot;true&quot;></span></li><li class=&quot;task done   &quot; data-id=&quot;x35&quot; style=&quot;--p:var(--b)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;true&quot;></button>
-      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>설거지</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 08:12</span></div></div>
+      <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>설거지</div><div class=&quot;meta&quot;><span class=&quot;who cat-tag&quot; style=&quot;--p:#e5731a&quot;>집안일</span><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 08:12</span></div></div>
       <span class=&quot;act ph&quot; aria-hidden=&quot;true&quot;></span></li></ul></section></div>
       <button class=&quot;fab&quot; id=&quot;addFab&quot; aria-label=&quot;할일 추가&quot;>+</button></div>
   </main>
@@ -820,7 +825,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -885,12 +891,13 @@ footer .brand{color:var(--ink)}
     <div id=&quot;view&quot;>
       <div class=&quot;datebar&quot;>
         <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
-        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 8일 일요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 12일 목요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
         <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
       </div>
       <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>1위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>재이아빠 🏆</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+5</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>79</b></div></div><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>2위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>재이맘(나)</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+4</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>124</b></div></div></div>
+      <button type=&quot;button&quot; class=&quot;reclink&quot; id=&quot;recLink&quot;>이번 주 기록 보기 <span aria-hidden=&quot;true&quot;>›</span></button>
       <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;><i style=&quot;width:30%;background:var(--b)&quot;></i><i style=&quot;width:20%;background:var(--a)&quot;></i></div>
         <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>5 / 10 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
       <div id=&quot;list&quot;><section class=&quot;urgent-box&quot;><h3>긴급 <small>1</small></h3><ul><li class=&quot;task    urgent&quot; data-id=&quot;urgent-x1&quot; data-tid=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
@@ -901,10 +908,10 @@ footer .brand{color:var(--ink)}
         <ul><li class=&quot;task    &quot; data-id=&quot;x2&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>밀린 빨래 개기</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--danger)&quot;>3일 지연</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x3&quot; data-tid=&quot;x3&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x3&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x4&quot; data-tid=&quot;x4&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x4&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>세탁기 돌리기</div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><section class=&quot;group&quot;>
@@ -912,7 +919,7 @@ footer .brand{color:var(--ink)}
         <ul><li class=&quot;task   bonus &quot; data-id=&quot;x5&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>재이 목욕시키기<span class=&quot;pts hot&quot;>⭐ +2점</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    urgent&quot; data-id=&quot;urgent-x1&quot; data-tid=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    urgent&quot; data-id=&quot;x1&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>재이 예방접종 예약 전화</div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><button class=&quot;sect-h&quot; id=&quot;doneToggle&quot; aria-expanded=&quot;false&quot;>완료한 일 <small>5</small><span class=&quot;fold&quot;>펼치기</span></button></div>
@@ -985,7 +992,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -1044,12 +1052,13 @@ footer .brand{color:var(--ink)}
     <div id=&quot;view&quot;>
       <div class=&quot;datebar&quot;>
         <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
-        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 8일 일요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 12일 목요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
         <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
       </div>
       <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>1위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>재이아빠 🏆</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+1</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>1</b></div></div><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>–</span><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>재이맘(나)</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+0</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>0</b></div></div></div>
+      <button type=&quot;button&quot; class=&quot;reclink&quot; id=&quot;recLink&quot;>이번 주 기록 보기 <span aria-hidden=&quot;true&quot;>›</span></button>
       <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;><i style=&quot;width:20%;background:var(--b)&quot;></i></div>
         <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>1 / 5 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
       <div id=&quot;list&quot;><div class=&quot;hotnote&quot;>⭐ 추가 포인트가 붙은 할일 1개 · 먼저 끝내면 최대 +3점 더!</div><section class=&quot;group&quot;>
@@ -1057,10 +1066,10 @@ footer .brand{color:var(--ink)}
         <ul><li class=&quot;task   bonus &quot; data-id=&quot;x13&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>화장실 청소<span class=&quot;pts hot&quot;>⭐ +3점</span></div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--danger)&quot;>4일 지연</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x15&quot; data-tid=&quot;x15&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x15&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거함 비우기</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span><span class=&quot;who&quot; style=&quot;--p:var(--danger)&quot;>1일 지연</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x16&quot; data-tid=&quot;x16&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x16&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>냉장고 정리</div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><section class=&quot;group&quot;>
@@ -1138,7 +1147,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -1197,12 +1207,13 @@ footer .brand{color:var(--ink)}
     <div id=&quot;view&quot;>
       <div class=&quot;datebar&quot;>
         <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
-        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 8일 일요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 12일 목요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
         <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
       </div>
       <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>–</span><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>재이맘(나)</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+0</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>0</b></div></div><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>–</span><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>재이아빠</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+0</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>0</b></div></div></div>
+      <button type=&quot;button&quot; class=&quot;reclink&quot; id=&quot;recLink&quot;>이번 주 기록 보기 <span aria-hidden=&quot;true&quot;>›</span></button>
       <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;></div>
         <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>0 / 5 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
       <div id=&quot;list&quot;><section class=&quot;urgent-box&quot;><h3>긴급 <small>2</small></h3><ul><li class=&quot;task    urgent&quot; data-id=&quot;urgent-x18&quot; data-tid=&quot;x18&quot; style=&quot;--p:var(--a)&quot;>
@@ -1216,10 +1227,10 @@ footer .brand{color:var(--ink)}
         <ul><li class=&quot;task    urgent&quot; data-id=&quot;x19&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>택배 반품 접수</div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x20&quot; data-tid=&quot;x20&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x20&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 담당</span></div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x22&quot; data-tid=&quot;x22&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x22&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>화분 물주기</div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><section class=&quot;group&quot;>
@@ -1227,7 +1238,7 @@ footer .brand{color:var(--ink)}
         <ul><li class=&quot;task    urgent&quot; data-id=&quot;x18&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>재이 예방접종 예약 전화</div></div>
-      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;urgent-x21&quot; data-tid=&quot;x21&quot; style=&quot;--p:var(--a)&quot;>
+      <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;true&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li><li class=&quot;task    &quot; data-id=&quot;x21&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>재이 어린이집 가방 챙기기</div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section></div>
@@ -1300,7 +1311,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -1364,23 +1376,24 @@ footer .brand{color:var(--ink)}
     <div id=&quot;view&quot;>
       <div class=&quot;datebar&quot;>
         <button class=&quot;nav&quot; id=&quot;prev&quot; aria-label=&quot;전날&quot;>‹</button>
-        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 8일 일요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
+        <div class=&quot;dd&quot;><b id=&quot;dateLabel&quot;>11월 12일 목요일<span class=&quot;badge&quot;>오늘</span></b><button class=&quot;link&quot; id=&quot;goToday&quot; hidden=&quot;&quot;>오늘로 돌아가기</button></div>
         <button class=&quot;nav&quot; id=&quot;next&quot; aria-label=&quot;다음날&quot;>›</button>
       </div>
       <div class=&quot;card board&quot; id=&quot;ptBoard&quot;><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>1위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--c)&quot;><i></i>재이 🏆</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+5</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>17</b></div></div><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>2위</span><div class=&quot;nmx&quot; style=&quot;--p:var(--b)&quot;><i></i>재이아빠</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+1</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>1</b></div></div><div class=&quot;rowp&quot;><span class=&quot;rk&quot;>–</span><div class=&quot;nmx&quot; style=&quot;--p:var(--a)&quot;><i></i>재이맘(나)</div>
         <div class=&quot;cell today&quot;><span>오늘</span><b>+0</b></div><div class=&quot;cell bal&quot;><span>보유</span><b>30</b></div></div><button type=&quot;button&quot; class=&quot;board-toggle&quot; id=&quot;boardToggle&quot; aria-expanded=&quot;true&quot;>접기 ▴</button></div>
+      <button type=&quot;button&quot; class=&quot;reclink&quot; id=&quot;recLink&quot;>이번 주 기록 보기 <span aria-hidden=&quot;true&quot;>›</span></button>
       <div class=&quot;prog&quot;><div class=&quot;bar&quot; id=&quot;bar&quot;><i style=&quot;width:50%;background:var(--c)&quot;></i><i style=&quot;width:16.666666666666664%;background:var(--b)&quot;></i></div>
         <div class=&quot;prog-line&quot;><span id=&quot;progText&quot;>4 / 6 완료</span><button type=&quot;button&quot; class=&quot;mini toggle&quot; id=&quot;viewToggle&quot; aria-pressed=&quot;true&quot;>완료 따로 보기</button></div></div>
       <div id=&quot;list&quot;><div class=&quot;hotnote&quot;>⭐ 추가 포인트가 붙은 할일 1개 · 먼저 끝내면 최대 +2점 더!</div><section class=&quot;group&quot;>
         <h3 class=&quot;fold&quot;><button type=&quot;button&quot; class=&quot;cat-h&quot; data-cat=&quot;c1&quot; aria-expanded=&quot;true&quot;><i style=&quot;background:#e5731a&quot;></i>집안일<small>2/3</small><svg class=&quot;chev&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;m6 9 6 6 6-6&quot;></path></svg></button></h3>
-        <ul><li class=&quot;task   bonus &quot; data-id=&quot;x37&quot; style=&quot;--p:var(--a)&quot;>
+        <ul><li class=&quot;task   bonus &quot; data-id=&quot;x70&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>분리수거 도와주기<span class=&quot;pts hot&quot;>⭐ +2점</span></div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--c)&quot;>재이 담당</span></div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><section class=&quot;group&quot;>
         <h3 class=&quot;fold&quot;><button type=&quot;button&quot; class=&quot;cat-h&quot; data-cat=&quot;c2&quot; aria-expanded=&quot;true&quot;><i style=&quot;background:#1f9d8b&quot;></i>재이 육아<small>2/3</small><svg class=&quot;chev&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;m6 9 6 6 6-6&quot;></path></svg></button></h3>
-        <ul><li class=&quot;task    &quot; data-id=&quot;x36&quot; style=&quot;--p:var(--a)&quot;>
+        <ul><li class=&quot;task    &quot; data-id=&quot;x69&quot; style=&quot;--p:var(--a)&quot;>
       <button class=&quot;chk&quot; aria-label=&quot;완료 체크&quot; aria-pressed=&quot;false&quot;></button>
       <div class=&quot;tt editable&quot;><div class=&quot;title&quot;>책가방 챙기기</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--c)&quot;>재이 담당</span></div></div>
       <button class=&quot;act urg&quot; aria-label=&quot;긴급 표시&quot; aria-pressed=&quot;false&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></button></li></ul></section><button class=&quot;sect-h&quot; id=&quot;doneToggle&quot; aria-expanded=&quot;false&quot;>완료한 일 <small>4</small><span class=&quot;fold&quot;>펼치기</span></button></div>
@@ -1453,7 +1466,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -1507,10 +1521,10 @@ footer .brand{color:var(--ink)}
       <h2>상점</h2><p class=&quot;sub&quot;>모은 포인트로 쿠폰을 사요.</p>
       <div class=&quot;card&quot;><div class=&quot;bal&quot;><div><div class=&quot;lbl&quot;>내 포인트</div><div class=&quot;big&quot; id=&quot;myBal&quot;>40<small>점</small></div></div><button class=&quot;mini&quot; data-act=&quot;history&quot;>사용 내역 ›</button></div></div>
       <div class=&quot;seg&quot; id=&quot;shopSeg&quot; style=&quot;margin-top:4px&quot;>
-        <button data-seg=&quot;sale&quot; class=&quot;on&quot;>판매 중 <small>4</small></button>
+        <button data-seg=&quot;sale&quot; class=&quot;on&quot;>판매중 <small>4</small></button>
         <button data-seg=&quot;mine&quot; class=&quot;&quot;>내 쿠폰 <small>0</small></button>
       </div>
-      <div class=&quot;shop-list&quot;><div class=&quot;card cp  &quot; data-id=&quot;cpk2&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>아이스크림 사 먹기권<span class=&quot;stock&quot;>남은 2개 / 총 3개</span></div><div class=&quot;price&quot;>8점</div></div><p class=&quot;desc&quot;>주말에 한 번</p><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  editable&quot; data-id=&quot;cp48&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>놀이터 30분 더 놀기권</div><div class=&quot;price&quot;>6점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--a)&quot;>내가 올림</span></div><button class=&quot;mini&quot; data-act=&quot;withdraw&quot;>내리기</button></div></div><div class=&quot;card cp  editable&quot; data-id=&quot;cp49&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>잠자기 전 동화책 한 권 더</div><div class=&quot;price&quot;>5점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--a)&quot;>내가 올림</span></div><button class=&quot;mini&quot; data-act=&quot;withdraw&quot;>내리기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cp50&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>주말 영화 고르기권</div><div class=&quot;price&quot;>12점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><button class=&quot;sect-h&quot; id=&quot;soldToggle&quot; aria-expanded=&quot;false&quot;>판매 완료 <small>1</small><span class=&quot;fold&quot;>펼치기</span></button></div>
+      <div class=&quot;shop-list&quot;><p class=&quot;hint tabhint&quot;>다른 사람이 올린 쿠폰은 포인트로 살 수 있어요.</p><div class=&quot;sect-h&quot;>구매할 수 있는 쿠폰 <small>2</small></div><div class=&quot;card cp  &quot; data-id=&quot;cpk2&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>아이스크림 사 먹기권<span class=&quot;stock&quot;>남은 2개 / 총 3개</span></div><div class=&quot;price&quot;>8점</div></div><p class=&quot;desc&quot;>주말에 한 번</p><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;card cp  &quot; data-id=&quot;cp83&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>주말 영화 고르기권</div><div class=&quot;price&quot;>12점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 올림</span></div><button class=&quot;btn sm&quot; data-act=&quot;buy&quot;>구매하기</button></div></div><div class=&quot;mgmt&quot; id=&quot;myCoupons&quot;><div class=&quot;mh&quot;><b>내가 올린 쿠폰 관리</b><small>판매 중 2 · 팔림 0</small></div><div class=&quot;card cp  editable&quot; data-id=&quot;cp81&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>놀이터 30분 더 놀기권</div><div class=&quot;price&quot;>6점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--a)&quot;>내가 올림</span></div><button class=&quot;mini&quot; data-act=&quot;withdraw&quot;>내리기</button></div></div><div class=&quot;card cp  editable&quot; data-id=&quot;cp82&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>잠자기 전 동화책 한 권 더</div><div class=&quot;price&quot;>5점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--a)&quot;>내가 올림</span></div><button class=&quot;mini&quot; data-act=&quot;withdraw&quot;>내리기</button></div></div><p class=&quot;hint&quot;>팔리면 알림이 가요. 팔리기 전에는 눌러서 고치거나 내릴 수 있어요.</p></div><button class=&quot;sect-h&quot; id=&quot;soldToggle&quot; aria-expanded=&quot;false&quot;>판매 완료 <small>1</small><span class=&quot;fold&quot;>펼치기</span></button></div>
       <button class=&quot;fab pill&quot; data-act=&quot;post&quot;>+ 쿠폰 올리기</button></div></div>
   </main>
   <nav id=&quot;tabs&quot;>
@@ -1580,7 +1594,140 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; style=&quot;flex:1&quot;>저장</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;couponSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;couponSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;couponSheetTitle&quot;>쿠폰 올리기</h3>
+    <form id=&quot;couponForm&quot; autocomplete=&quot;off&quot;>
+      <label>쿠폰 이름<input id=&quot;cpTitle&quot; placeholder=&quot;예: 육아 건너뛰고 회식 참석권&quot; maxlength=&quot;100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>설명(선택)<input id=&quot;cpDesc&quot; placeholder=&quot;예: 이번 주 중 하루&quot; maxlength=&quot;300&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <label style=&quot;flex:1&quot;>가격(포인트)<input id=&quot;cpPrice&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;100000&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; placeholder=&quot;예: 100&quot; required=&quot;&quot; value=&quot;&quot;></label>
+        <label style=&quot;flex:1&quot;><span id=&quot;cpQtyLabel&quot;>개수</span><input id=&quot;cpQty&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;99&quot; step=&quot;1&quot; inputmode=&quot;numeric&quot; value=&quot;1&quot; required=&quot;&quot;></label>
+      </div>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>개수만큼 팔 수 있어요(1~99). 한 장씩 팔리고, 사면 산 사람의 포인트가 그만큼 줄어요. 다 팔리면 목록에서 사라지고, 팔리기 전에는 언제든 고치거나 내릴 수 있어요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;cpCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;cpSubmit&quot; style=&quot;flex:1&quot;>올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;tutorial&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div id=&quot;tutStep&quot;></div>
+    <div class=&quot;dots&quot; id=&quot;tutDots&quot;></div>
+    <div class=&quot;ovBtns&quot;>
+      <button class=&quot;link&quot; id=&quot;tutSkip&quot;>건너뛰기</button>
+      <button class=&quot;btn&quot; id=&quot;tutNext&quot;>다음</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body></html>"></iframe></div></div></div>
+</div></section>
+
+<section class="feature" id="record"><div class="wrap">
+  <div class="text"><p class="eyebrow">기록</p><h2>이번 주, 누가 얼마나 했는지 한눈에</h2>
+    <p class="lead">오늘 탭의 점수판 아래 "이번 주 기록 보기"를 누르면 도넛 그래프로 재이맘과 재이아빠가 각각 몇 개를 했는지 보여요. 누가 더 했나 따지려는 게 아니라, 서로 고맙다고 말하려고 만든 화면이에요.</p>
+    <ul>
+      <li><b>오늘 / 이번 주 / 이번 달</b>을 눌러 바꿔 봐요</li>
+      <li><b>요일별 막대</b>와 <b>카테고리별 비교</b>로 육아와 집안일을 누가 많이 맡았는지 보여요</li>
+      <li>가장 많이 한 일 순위와 번 포인트도 함께 나와요</li>
+      <li>색은 앱에서 고른 <b>멤버 색</b> 그대로예요</li></ul></div>
+  <div class="visual"><div class="phone" role="img" aria-label="이번 주 기록 화면"><div class="notch"></div><div class="screen"><iframe tabindex="-1" loading="lazy" title="이번 주 기록 화면" srcdoc="<!doctype html><html lang=&quot;ko&quot;><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=390&quot;><link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;><style>html,body{height:100%;overflow:hidden}#topbar{padding-top:26px}#app{height:100%}.fab{position:absolute}</style></head><body>
+<div id=&quot;app&quot;>
+  <main id=&quot;main&quot;>
+    <div id=&quot;topbar&quot;>
+  <div id=&quot;groupBar&quot;><button class=&quot;home&quot; id=&quot;homeBtn&quot; type=&quot;button&quot; aria-label=&quot;홈으로 (그룹 목록)&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8&quot;></path><path d=&quot;M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z&quot;></path></svg></button></div>
+  <span id=&quot;barName&quot;>재이네 가족</span>
+  <button id=&quot;bellBtn&quot; class=&quot;bell&quot; type=&quot;button&quot; aria-label=&quot;알림함&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;21&quot; height=&quot;21&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9&quot;></path><path d=&quot;M10.3 21a1.94 1.94 0 0 0 3.4 0&quot;></path></svg><span id=&quot;bellCount&quot; hidden=&quot;&quot;>0</span></button>
+    </div>
+    <div id=&quot;view&quot;><div class=&quot;bk&quot;><button type=&quot;button&quot; class=&quot;back&quot; id=&quot;recBack&quot;>‹ 오늘</button><b>우리 기록</b><span class=&quot;bk-sp&quot;></span></div><div id=&quot;recRoot&quot;><div class=&quot;seg&quot; id=&quot;recSeg&quot;><button type=&quot;button&quot; data-range=&quot;day&quot; class=&quot;&quot;>오늘</button><button type=&quot;button&quot; data-range=&quot;week&quot; class=&quot;on&quot;>이번 주</button><button type=&quot;button&quot; data-range=&quot;month&quot; class=&quot;&quot;>이번 달</button></div><div class=&quot;card donut-card&quot;><svg viewBox=&quot;0 0 140 140&quot; width=&quot;140&quot; height=&quot;140&quot; role=&quot;img&quot; aria-label=&quot;이번 주 끝낸 일 33개&quot;><circle cx=&quot;70&quot; cy=&quot;70&quot; r=&quot;52&quot; fill=&quot;none&quot; stroke=&quot;var(--track)&quot; stroke-width=&quot;22&quot;></circle><circle cx=&quot;70&quot; cy=&quot;70&quot; r=&quot;52&quot; fill=&quot;none&quot; style=&quot;stroke:var(--a)&quot; stroke-width=&quot;22&quot; stroke-dasharray=&quot;198.02 128.71&quot; stroke-dashoffset=&quot;0.00&quot; transform=&quot;rotate(-90 70 70)&quot;></circle><circle cx=&quot;70&quot; cy=&quot;70&quot; r=&quot;52&quot; fill=&quot;none&quot; style=&quot;stroke:var(--b)&quot; stroke-width=&quot;22&quot; stroke-dasharray=&quot;128.71 198.02&quot; stroke-dashoffset=&quot;-198.02&quot; transform=&quot;rotate(-90 70 70)&quot;></circle>
+      <text x=&quot;70&quot; y=&quot;66&quot; text-anchor=&quot;middle&quot; font-size=&quot;12&quot; fill=&quot;var(--mute)&quot;>이번 주</text><text x=&quot;70&quot; y=&quot;86&quot; text-anchor=&quot;middle&quot; font-size=&quot;20&quot; font-weight=&quot;800&quot; fill=&quot;var(--ink)&quot;>33개</text></svg><div class=&quot;who2s&quot;><div class=&quot;who2&quot; style=&quot;color:var(--a)&quot;>재이맘(나)<b>20개</b><small>61% · +20점</small></div><div class=&quot;who2&quot; style=&quot;color:var(--b)&quot;>재이아빠<b>13개</b><small>39% · +21점</small></div></div></div><div class=&quot;card&quot;><h3>요일별</h3><div class=&quot;lg2&quot;><span><i style=&quot;background:var(--a)&quot;></i>재이맘</span><span><i style=&quot;background:var(--b)&quot;></i>재이아빠</span></div><div class=&quot;chart &quot;><div class=&quot;col&quot; title=&quot;8개&quot;><div class=&quot;stk&quot;><i style=&quot;height:33.33333333333333%;background:var(--b)&quot;></i><i style=&quot;height:55.55555555555556%;background:var(--a)&quot;></i></div><span>월</span></div><div class=&quot;col&quot; title=&quot;9개&quot;><div class=&quot;stk&quot;><i style=&quot;height:44.44444444444444%;background:var(--b)&quot;></i><i style=&quot;height:55.55555555555556%;background:var(--a)&quot;></i></div><span>화</span></div><div class=&quot;col&quot; title=&quot;9개&quot;><div class=&quot;stk&quot;><i style=&quot;height:33.33333333333333%;background:var(--b)&quot;></i><i style=&quot;height:66.66666666666666%;background:var(--a)&quot;></i></div><span>수</span></div><div class=&quot;col&quot; title=&quot;7개&quot;><div class=&quot;stk&quot;><i style=&quot;height:33.33333333333333%;background:var(--b)&quot;></i><i style=&quot;height:44.44444444444444%;background:var(--a)&quot;></i></div><span>목</span></div><div class=&quot;col&quot; title=&quot;0개&quot;><div class=&quot;stk&quot;></div><span>금</span></div><div class=&quot;col&quot; title=&quot;0개&quot;><div class=&quot;stk&quot;></div><span>토</span></div><div class=&quot;col&quot; title=&quot;0개&quot;><div class=&quot;stk&quot;></div><span>일</span></div></div></div><div class=&quot;card sumline&quot;><div class=&quot;sh&quot;>한마디</div><div><b>재이맘</b>님이 가장 많이 했어요(20개). 가장 열심히 한 날은 <b>화요일</b>이에요.</div></div><div class=&quot;card&quot;><h3>카테고리별</h3><div class=&quot;lg2&quot;><span><i style=&quot;background:var(--a)&quot;></i>재이맘</span><span><i style=&quot;background:var(--b)&quot;></i>재이아빠</span></div><div class=&quot;cr&quot;><div class=&quot;ch&quot;><i style=&quot;background:#e5731a&quot;></i>집안일<small>19개</small></div><div class=&quot;hb&quot;><i style=&quot;width:73.68421052631578%;background:var(--a)&quot; title=&quot;재이맘 14개&quot;></i><i style=&quot;width:26.31578947368421%;background:var(--b)&quot; title=&quot;재이아빠 5개&quot;></i></div></div><div class=&quot;cr&quot;><div class=&quot;ch&quot;><i style=&quot;background:#1f9d8b&quot;></i>재이 육아<small>14개</small></div><div class=&quot;hb&quot;><i style=&quot;width:42.857142857142854%;background:var(--a)&quot; title=&quot;재이맘 6개&quot;></i><i style=&quot;width:57.14285714285714%;background:var(--b)&quot; title=&quot;재이아빠 8개&quot;></i></div></div></div><div class=&quot;card&quot;><h3>가장 많이 한 일</h3><div class=&quot;rk2&quot;><b>1</b><span>설거지</span><em style=&quot;color:var(--a)&quot;>나 6번</em></div><div class=&quot;rk2&quot;><b>2</b><span>재이 목욕시키기</span><em style=&quot;color:var(--b)&quot;>재이아빠 4번 · 전체 6번</em></div><div class=&quot;rk2&quot;><b>3</b><span>분리수거</span><em style=&quot;color:var(--a)&quot;>나 4번 · 전체 5번</em></div></div><div class=&quot;card&quot;><h3>번 포인트</h3><div class=&quot;pt&quot;><span>재이맘</span><div><i style=&quot;width:95.23809523809523%;background:var(--a)&quot;></i></div><b>20</b></div><div class=&quot;pt&quot;><span>재이아빠</span><div><i style=&quot;width:100%;background:var(--b)&quot;></i></div><b>21</b></div></div></div></div>
+  </main>
+  <nav id=&quot;tabs&quot;>
+    <button data-tab=&quot;today&quot; class=&quot;on&quot;>오늘</button>
+    <button data-tab=&quot;routines&quot;>루틴</button>
+    <button data-tab=&quot;shop&quot;>상점</button>
+    <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
+  </nav>
+</div>
+<div id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;></div>
+<div id=&quot;updateBar&quot; role=&quot;status&quot; hidden=&quot;&quot;><span>새 버전이 나왔어요</span><button type=&quot;button&quot; id=&quot;updateBtn&quot;>업데이트</button></div>
+<div id=&quot;createSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;createSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;createSheetTitle&quot;>새 그룹 만들기</h3>
+    <form id=&quot;createForm&quot; autocomplete=&quot;off&quot;>
+      <label>그룹 이름<input id=&quot;csGroup&quot; placeholder=&quot;예: 룸메이트&quot; maxlength=&quot;40&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;csName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>그룹마다 다른 이름을 쓸 수 있어요. 만든 사람이 방장이 되고, 초대 코드가 만들어져요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;csCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;csGo&quot; style=&quot;flex:1&quot;>만들기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;joinSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;joinSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;joinSheetTitle&quot;>코드로 참여</h3>
+    <form id=&quot;joinForm&quot; autocomplete=&quot;off&quot;>
+      <label>초대 코드<input id=&quot;jsCode&quot; placeholder=&quot;XXXX-XXXX&quot; maxlength=&quot;9&quot; autocapitalize=&quot;characters&quot; inputmode=&quot;text&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label>이 그룹에서 쓸 내 이름<input id=&quot;jsName&quot; placeholder=&quot;예: 민지&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <p class=&quot;hint&quot; style=&quot;margin:0&quot;>참여 요청이 가고, 방장이 수락하면 목록에 나타나요.</p>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;jsCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;jsGo&quot; style=&quot;flex:1&quot;>참여 요청 보내기</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;addSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;addSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div class=&quot;in-head&quot;><h3 id=&quot;addSheetTitle&quot;>할일 추가</h3><button type=&quot;button&quot; class=&quot;mini del&quot; id=&quot;addDelete&quot; hidden=&quot;&quot;>삭제</button></div>
+    <p id=&quot;addRoutineNote&quot; class=&quot;hint&quot; hidden=&quot;&quot;></p>
+    <form id=&quot;addForm&quot; autocomplete=&quot;off&quot;>
+      <input id=&quot;addTitle&quot; placeholder=&quot;무슨 일을 할까요?&quot; maxlength=&quot;100&quot; required=&quot;&quot; enterkeyhint=&quot;done&quot; value=&quot;&quot;>
+      <div class=&quot;row&quot;><select id=&quot;addCat&quot; aria-label=&quot;카테고리&quot;></select><select id=&quot;addWho&quot; aria-label=&quot;담당&quot;></select></div>
+      <label>추가 포인트(선택) — 다른 사람이 먼저 해주길 바랄 때 (내가 붙인 일은 내가 완료할 수 없어요)<select id=&quot;addBonus&quot;><option value=&quot;0&quot; selected=&quot;&quot;>없음</option><option value=&quot;1&quot;>+1점</option><option value=&quot;2&quot;>+2점</option><option value=&quot;3&quot;>+3점</option><option value=&quot;5&quot;>+5점</option><option value=&quot;10&quot;>+10점</option></select></label>
+      <label class=&quot;check urgent-check&quot;><input type=&quot;checkbox&quot; id=&quot;addUrgent&quot;> <span>긴급</span><svg class=&quot;zap&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;17&quot; height=&quot;17&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M13 2 3 14h9l-1 8 10-12h-9l1-8z&quot;></path></svg></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;addCarry&quot;> 완료 못하면 다음날로 이월</label>
+      <label>완료하면 이어서 추가할 할일(선택)<input id=&quot;addChain&quot; placeholder=&quot;예: 건조기 돌리기, 빨래 개기 (쉼표로 구분)&quot; maxlength=&quot;200&quot; value=&quot;&quot;></label>
+      <div class=&quot;row&quot;>
+        <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;addCancel&quot; style=&quot;flex:1&quot;>취소</button>
+        <button class=&quot;btn&quot; id=&quot;addSubmit&quot; style=&quot;flex:1&quot;>추가</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id=&quot;inboxSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;inboxTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <div class=&quot;in-head&quot;><h3 id=&quot;inboxTitle&quot;>알림함</h3><button type=&quot;button&quot; class=&quot;mini&quot; id=&quot;inboxAll&quot;>모두 읽음</button><button type=&quot;button&quot; class=&quot;x&quot; id=&quot;inboxClose&quot; aria-label=&quot;닫기&quot;>×</button></div>
+    <p class=&quot;hint&quot; style=&quot;margin:-6px 0 8px&quot;>안 읽은 알림만 보여요. 누르면 읽음 처리돼요.</p>
+    <ul id=&quot;inboxList&quot;></ul>
+  </div>
+</div>
+<div id=&quot;catSheet&quot; class=&quot;modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;catSheetTitle&quot; hidden=&quot;&quot;>
+  <div class=&quot;sheet&quot;>
+    <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
+    <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
+      <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -1649,12 +1796,12 @@ footer .brand{color:var(--ink)}
       </div>
       <div class=&quot;seg&quot; id=&quot;histSeg&quot; style=&quot;margin:0 0 10px&quot;>
         <button data-hf=&quot;all&quot; class=&quot;on&quot;>전체</button><button data-hf=&quot;earn&quot; class=&quot;&quot;>번 것</button><button data-hf=&quot;spend&quot; class=&quot;&quot;>쓴 것</button>
-      </div><div class=&quot;card&quot; style=&quot;padding:0&quot;><div class=&quot;lg&quot;><div class=&quot;ic&quot;>🛍</div><div class=&quot;t&quot;><b>육아 건너뛰고 회식 참석권 구매</b><span>재이아빠 님 쿠폰 · 오늘</span></div><div class=&quot;n m&quot;>-100</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>화장실 청소</b><span>할일 완료 · 보너스 +2 · 3일 지연 +3 · 오늘</span></div><div class=&quot;n p&quot;>+6</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>장보기</b><span>할일 완료 · 보너스 +2 · 오늘</span></div><div class=&quot;n p&quot;>+3</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>재이 분유 타기</b><span>할일 완료 · 오늘</span></div><div class=&quot;n p&quot;>+1</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>집 대청소</b><span>할일 완료 · 보너스 +100 · 11/7</span></div><div class=&quot;n p&quot;>+101</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>재이 목욕시키기</b><span>할일 완료 · 23일 지연 +23 · 11/6</span></div><div class=&quot;n p&quot;>+24</div></div></div></div></div>
+      </div><div class=&quot;card&quot; style=&quot;padding:0&quot;><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>화장실 청소</b><span>할일 완료 · 보너스 +2 · 3일 지연 +3 · 오늘</span></div><div class=&quot;n p&quot;>+6</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>장보기</b><span>할일 완료 · 보너스 +2 · 오늘</span></div><div class=&quot;n p&quot;>+3</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>재이 분유 타기</b><span>할일 완료 · 오늘</span></div><div class=&quot;n p&quot;>+1</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>🛍</div><div class=&quot;t&quot;><b>육아 건너뛰고 회식 참석권 구매</b><span>재이아빠 님 쿠폰 · 11/11</span></div><div class=&quot;n m&quot;>-100</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>집 대청소</b><span>할일 완료 · 보너스 +100 · 11/11</span></div><div class=&quot;n p&quot;>+101</div></div><div class=&quot;lg&quot;><div class=&quot;ic&quot;>✓</div><div class=&quot;t&quot;><b>재이 목욕시키기</b><span>할일 완료 · 23일 지연 +23 · 11/10</span></div><div class=&quot;n p&quot;>+24</div></div></div></div></div>
   </main>
   <nav id=&quot;tabs&quot;>
     <button data-tab=&quot;today&quot; class=&quot;&quot;>오늘</button>
     <button data-tab=&quot;routines&quot;>루틴</button>
-    <button data-tab=&quot;shop&quot; class=&quot;on&quot;>상점</button>
+    <button data-tab=&quot;shop&quot; class=&quot;has-alert on&quot;>상점</button>
     <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
   </nav>
 </div>
@@ -1718,7 +1865,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -1783,16 +1931,16 @@ footer .brand{color:var(--ink)}
       <h2>상점</h2><p class=&quot;sub&quot;>모은 포인트로 쿠폰을 사요.</p>
       <div class=&quot;card&quot;><div class=&quot;bal&quot;><div><div class=&quot;lbl&quot;>내 포인트</div><div class=&quot;big&quot; id=&quot;myBal&quot;>60<small>점</small></div></div><button class=&quot;mini&quot; data-act=&quot;history&quot;>사용 내역 ›</button></div></div>
       <div class=&quot;seg&quot; id=&quot;shopSeg&quot; style=&quot;margin-top:4px&quot;>
-        <button data-seg=&quot;sale&quot; class=&quot;&quot;>판매 중 <small>0</small></button>
-        <button data-seg=&quot;mine&quot; class=&quot;on&quot;>내 쿠폰 <small>1</small></button>
+        <button data-seg=&quot;sale&quot; class=&quot;&quot;>판매중 <small>0</small></button>
+        <button data-seg=&quot;mine&quot; class=&quot;on&quot;>내 쿠폰 <span class=&quot;badge&quot; aria-label=&quot;아직 안 쓴 쿠폰 1장&quot;>1</span></button>
       </div>
-      <div class=&quot;shop-list&quot;><div class=&quot;sect-h&quot;>사용 가능 <small>1</small></div><div class=&quot;card cp  &quot; data-id=&quot;cp69&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>육아 건너뛰고 회식 참석권</div><div class=&quot;price&quot;>100점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님에게서 구매 · 오늘</span></div><button class=&quot;btn sm&quot; data-act=&quot;use&quot;>사용하기</button></div></div><div class=&quot;sect-h&quot;>사용함 <small>1</small></div><div class=&quot;card cp used &quot; data-id=&quot;cp70&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>주말 늦잠 보장권</div><div class=&quot;price&quot;>40점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님에게서 구매</span><span>11/7 사용함</span></div></div></div><div class=&quot;sect-h&quot;>내가 올려서 팔린 쿠폰 <small>1</small></div><div class=&quot;card cp  &quot; data-id=&quot;cp71&quot;><div class=&quot;top&quot;><div class=&quot;nm&quot;>안마 30분권</div><div class=&quot;price&quot;>80점</div></div><div class=&quot;foot&quot;><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님이 구매 · 11/7</span><span>아직 안 씀</span></div></div></div></div>
+      <div class=&quot;shop-list&quot;><p class=&quot;hint tabhint&quot;>내가 산 쿠폰이에요. 쓸 때 &quot;사용하기&quot;를 눌러요.</p><div class=&quot;sect-h&quot;>사용 가능 <small>1</small></div><div class=&quot;card cp ticket &quot; data-id=&quot;cp102&quot;><div class=&quot;tk-a&quot;><div class=&quot;nm&quot;>육아 건너뛰고 회식 참석권</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님에게서 구매 · 11/11</span></div></div><div class=&quot;tk-b&quot;><div class=&quot;price&quot;>100점</div><button class=&quot;btn sm&quot; data-act=&quot;use&quot;>사용하기</button></div></div><div class=&quot;sect-h&quot;>사용함 <small>1</small></div><div class=&quot;card cp ticket used&quot; data-id=&quot;cp103&quot;><div class=&quot;tk-a&quot;><div class=&quot;nm&quot;>주말 늦잠 보장권</div><div class=&quot;meta&quot;><span class=&quot;who&quot; style=&quot;--p:var(--b)&quot;>재이아빠 님에게서 구매</span><span>11/11 사용함</span></div></div><div class=&quot;tk-b&quot;><div class=&quot;price&quot;>40점</div><span class=&quot;tk-done&quot;>사용 완료</span></div></div></div>
       <button class=&quot;fab pill&quot; data-act=&quot;post&quot;>+ 쿠폰 올리기</button></div></div>
   </main>
   <nav id=&quot;tabs&quot;>
     <button data-tab=&quot;today&quot; class=&quot;&quot;>오늘</button>
     <button data-tab=&quot;routines&quot;>루틴</button>
-    <button data-tab=&quot;shop&quot; class=&quot;on&quot;>상점</button>
+    <button data-tab=&quot;shop&quot; class=&quot;has-alert on&quot;>상점</button>
     <button data-tab=&quot;settings&quot; class=&quot;has-alert&quot;>설정</button>
   </nav>
 </div>
@@ -1856,7 +2004,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -1910,10 +2059,10 @@ footer .brand{color:var(--ink)}
       <h2>상점</h2><p class=&quot;sub&quot;>모은 포인트로 쿠폰을 사요.</p>
       <div class=&quot;card&quot;><div class=&quot;bal&quot;><div><div class=&quot;lbl&quot;>내 포인트</div><div class=&quot;big&quot; id=&quot;myBal&quot;>130<small>점</small></div></div><button class=&quot;mini&quot; data-act=&quot;history&quot;>사용 내역 ›</button></div></div>
       <div class=&quot;seg&quot; id=&quot;shopSeg&quot; style=&quot;margin-top:4px&quot;>
-        <button data-seg=&quot;sale&quot; class=&quot;on&quot;>판매 중 <small>0</small></button>
+        <button data-seg=&quot;sale&quot; class=&quot;on&quot;>판매중 <small>0</small></button>
         <button data-seg=&quot;mine&quot; class=&quot;&quot;>내 쿠폰 <small>0</small></button>
       </div>
-      <div class=&quot;shop-list&quot;><p class=&quot;empty&quot;>판매 중인 쿠폰이 없어요.<br>아래 버튼으로 첫 쿠폰을 올려보세요.</p></div>
+      <div class=&quot;shop-list&quot;><p class=&quot;hint tabhint&quot;>다른 사람이 올린 쿠폰은 포인트로 살 수 있어요.</p><p class=&quot;empty&quot;>판매 중인 쿠폰이 없어요.<br>아래 버튼으로 첫 쿠폰을 올려보세요.</p><div class=&quot;mgmt&quot; id=&quot;myCoupons&quot;><div class=&quot;mh&quot;><b>내가 올린 쿠폰 관리</b><small>판매 중 0 · 팔림 0</small></div><p class=&quot;hint&quot;>아직 올린 쿠폰이 없어요. 아래 &quot;+ 쿠폰 올리기&quot;로 올려보세요.</p></div></div>
       <button class=&quot;fab pill&quot; data-act=&quot;post&quot;>+ 쿠폰 올리기</button></div></div>
   </main>
   <nav id=&quot;tabs&quot;>
@@ -1983,7 +2132,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -2128,7 +2278,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
@@ -2223,8 +2374,8 @@ footer .brand{color:var(--ink)}
         <form id=&quot;nameForm&quot;><div class=&quot;row&quot;>
           <input id=&quot;myName&quot; maxlength=&quot;20&quot; required=&quot;&quot; aria-label=&quot;내 이름&quot; value=&quot;재이맘&quot;>
           <button class=&quot;btn&quot;>이름 저장</button></div></form>
-        <p class=&quot;hint&quot; style=&quot;margin:14px 0 6px&quot;>내 색이에요. 이 그룹 사람들에게 내가 한 일이 이 색으로 보여요. 다른 멤버가 쓰고 있는 색은 고를 수 없어요.</p>
-        <div id=&quot;myColors&quot; class=&quot;mcolors&quot; role=&quot;group&quot; aria-label=&quot;내 색&quot;><button type=&quot;button&quot; class=&quot;mc auto&quot; data-color=&quot;&quot; aria-pressed=&quot;true&quot; aria-label=&quot;내 색: 자동&quot;>자동</button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#3563e9&quot; style=&quot;--c:#3563e9&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 파랑&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#e59a12&quot; style=&quot;--c:#e59a12&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 주황 (다른 멤버가 쓰는 색)&quot; disabled=&quot;&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#1f9d8b&quot; style=&quot;--c:#1f9d8b&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 청록&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#8a6fd1&quot; style=&quot;--c:#8a6fd1&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 보라&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#d1476f&quot; style=&quot;--c:#d1476f&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 분홍&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#5c6bc0&quot; style=&quot;--c:#5c6bc0&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 남색&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#2e9e4f&quot; style=&quot;--c:#2e9e4f&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 초록&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#e5731a&quot; style=&quot;--c:#e5731a&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 귤색&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#0f8fb5&quot; style=&quot;--c:#0f8fb5&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 하늘&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#c8412f&quot; style=&quot;--c:#c8412f&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 빨강&quot;></button></div>
+        <p class=&quot;hint&quot; style=&quot;margin:14px 0 6px&quot;>내 색이에요. 이 그룹 사람들에게 내가 한 일이 이 색으로 보여요. 다른 멤버가 쓰는 색은 그 사람 이름의 첫 글자가 적혀 있고 고를 수 없어요.</p>
+        <div id=&quot;myColors&quot; class=&quot;mcolors&quot; role=&quot;group&quot; aria-label=&quot;내 색&quot;><button type=&quot;button&quot; class=&quot;mc auto&quot; data-color=&quot;&quot; aria-pressed=&quot;true&quot; aria-label=&quot;내 색: 자동&quot;>자동</button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#3563e9&quot; data-user=&quot;&quot; style=&quot;--c:#3563e9&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 파랑&quot;></button><button type=&quot;button&quot; class=&quot;mc taken&quot; data-color=&quot;#e59a12&quot; data-user=&quot;재이아빠&quot; style=&quot;--c:#e59a12&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 주황 (재이아빠님이 쓰는 색)&quot; aria-disabled=&quot;true&quot;>재</button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#1f9d8b&quot; data-user=&quot;&quot; style=&quot;--c:#1f9d8b&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 청록&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#8a6fd1&quot; data-user=&quot;&quot; style=&quot;--c:#8a6fd1&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 보라&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#d1476f&quot; data-user=&quot;&quot; style=&quot;--c:#d1476f&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 분홍&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#5c6bc0&quot; data-user=&quot;&quot; style=&quot;--c:#5c6bc0&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 남색&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#2e9e4f&quot; data-user=&quot;&quot; style=&quot;--c:#2e9e4f&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 초록&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#e5731a&quot; data-user=&quot;&quot; style=&quot;--c:#e5731a&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 귤색&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#0f8fb5&quot; data-user=&quot;&quot; style=&quot;--c:#0f8fb5&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 하늘&quot;></button><button type=&quot;button&quot; class=&quot;mc&quot; data-color=&quot;#c8412f&quot; data-user=&quot;&quot; style=&quot;--c:#c8412f&quot; aria-pressed=&quot;false&quot; aria-label=&quot;내 색: 빨강&quot;></button></div>
       </section>
       <section class=&quot;card stack&quot;>
         <h3>푸시 알림</h3>
@@ -2239,21 +2390,22 @@ footer .brand{color:var(--ink)}
       </section>
       <section class=&quot;card&quot;>
         <h3>카테고리</h3>
-        <ul id=&quot;cList&quot;><li class=&quot;crow&quot; data-id=&quot;c1&quot;><input type=&quot;color&quot; class=&quot;swatch-pick&quot; data-act=&quot;color&quot; value=&quot;#e5731a&quot; aria-label=&quot;집안일 색 바꾸기&quot;><span class=&quot;tt&quot; title=&quot;집안일&quot;>집안일</span>
+        <ul id=&quot;cList&quot;><li class=&quot;crow&quot; data-id=&quot;c1&quot;><input type=&quot;color&quot; class=&quot;swatch-pick&quot; data-act=&quot;color&quot; value=&quot;#e5731a&quot; aria-label=&quot;집안일 색 바꾸기&quot;><span class=&quot;tt&quot;><span class=&quot;nm&quot; title=&quot;집안일&quot;>집안일</span><span class=&quot;defmark&quot;>(기본)</span></span>
         <button class=&quot;mini&quot; data-act=&quot;up&quot; aria-label=&quot;위로 이동&quot; disabled=&quot;&quot;>▲</button><button class=&quot;mini&quot; data-act=&quot;down&quot; aria-label=&quot;아래로 이동&quot;>▼</button>
-        <button class=&quot;mini&quot; data-act=&quot;rename&quot; aria-label=&quot;카테고리 수정&quot; title=&quot;수정&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z&quot;></path></svg></button><button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;카테고리 삭제&quot;>×</button></li><li class=&quot;crow&quot; data-id=&quot;c2&quot;><input type=&quot;color&quot; class=&quot;swatch-pick&quot; data-act=&quot;color&quot; value=&quot;#1f9d8b&quot; aria-label=&quot;재이 육아 색 바꾸기&quot;><span class=&quot;tt&quot; title=&quot;재이 육아&quot;>재이 육아</span>
+        <button class=&quot;mini&quot; data-act=&quot;rename&quot; aria-label=&quot;카테고리 수정&quot; title=&quot;수정&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z&quot;></path></svg></button><button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;카테고리 삭제&quot;>×</button></li><li class=&quot;crow&quot; data-id=&quot;c2&quot;><input type=&quot;color&quot; class=&quot;swatch-pick&quot; data-act=&quot;color&quot; value=&quot;#1f9d8b&quot; aria-label=&quot;재이 육아 색 바꾸기&quot;><span class=&quot;tt&quot;><span class=&quot;nm&quot; title=&quot;재이 육아&quot;>재이 육아</span></span>
         <button class=&quot;mini&quot; data-act=&quot;up&quot; aria-label=&quot;위로 이동&quot;>▲</button><button class=&quot;mini&quot; data-act=&quot;down&quot; aria-label=&quot;아래로 이동&quot; disabled=&quot;&quot;>▼</button>
         <button class=&quot;mini&quot; data-act=&quot;rename&quot; aria-label=&quot;카테고리 수정&quot; title=&quot;수정&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;15&quot; height=&quot;15&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z&quot;></path></svg></button><button class=&quot;x&quot; data-act=&quot;del&quot; aria-label=&quot;카테고리 삭제&quot;>×</button></li></ul>
         <form id=&quot;cForm&quot; autocomplete=&quot;off&quot;><div class=&quot;row&quot;>
           <input id=&quot;cName&quot; placeholder=&quot;새 카테고리&quot; maxlength=&quot;20&quot; required=&quot;&quot; value=&quot;&quot;>
           <input id=&quot;cColor&quot; type=&quot;color&quot; value=&quot;#e05fa8&quot; aria-label=&quot;새 카테고리 색 (겹치지 않는 색이 자동으로 골라져 있어요)&quot;>
           <button class=&quot;btn&quot;>추가</button></div></form>
-        <p class=&quot;hint&quot;>새 카테고리의 색은 이미 쓰는 색과 겹치지 않게 자동으로 골라져 있어요. 색 동그라미를 눌러 바꿀 수 있고, 목록의 색 칸을 눌러 기존 카테고리의 색도 바꿀 수 있어요. 카테고리의 연필 버튼(수정)에서 &quot;기본 카테고리로 쓰기&quot;를 켜면 이름 옆에 &quot;(기본)&quot;이 붙고 새 할일을 추가할 때 먼저 골라져 있어요(이 폰에만 저장돼요). 카테고리를 지워도 그 안의 할일은 ‘카테고리 없음’으로 남아요.</p>
+        <p class=&quot;hint&quot;>연필 버튼에서 이름, 색, 기본 카테고리를 바꿀 수 있어요. 지워도 그 안의 할일은 ‘카테고리 없음’으로 남아요.</p>
       </section>
       <section class=&quot;card&quot; id=&quot;leaveCard&quot;>
         <button class=&quot;btn ghost danger&quot; id=&quot;leaveBtn&quot; style=&quot;width:100%&quot; hidden=&quot;&quot;>이 그룹에서 나가기</button>
         <p class=&quot;hint&quot; id=&quot;leaveHint&quot; style=&quot;margin:8px 0 0&quot;>방장은 이 그룹에서 나갈 수 없어요.</p>
       </section>
+      <p class=&quot;appver&quot; id=&quot;appVersion&quot;>WeDo 버전 0.8.0</p>
       <div style=&quot;height:16px&quot;></div></div>
   </main>
   <nav id=&quot;tabs&quot;>
@@ -2323,7 +2475,8 @@ footer .brand{color:var(--ink)}
     <h3 id=&quot;catSheetTitle&quot;>카테고리 수정</h3>
     <form id=&quot;catForm&quot; autocomplete=&quot;off&quot;>
       <label>이름<input id=&quot;catEditName&quot; maxlength=&quot;30&quot; required=&quot;&quot; value=&quot;&quot;></label>
-      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span>기본 카테고리로 쓰기</span></label>
+      <label class=&quot;check&quot;><span>색</span><input id=&quot;catEditColor&quot; type=&quot;color&quot; aria-label=&quot;카테고리 색&quot; value=&quot;#000000&quot;></label>
+      <label class=&quot;check&quot;><input type=&quot;checkbox&quot; id=&quot;catEditDefault&quot;> <span id=&quot;catEditDefaultText&quot;>기본 카테고리로 쓰기</span></label>
       <p class=&quot;hint&quot; style=&quot;margin:0&quot;>기본 카테고리는 새 할일과 새 루틴을 만들 때 먼저 골라져 있어요(이 폰에만 저장돼요).</p>
       <div class=&quot;row&quot;>
         <button type=&quot;button&quot; class=&quot;btn ghost&quot; id=&quot;catEditCancel&quot; style=&quot;flex:1&quot;>취소</button>
